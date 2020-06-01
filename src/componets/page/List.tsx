@@ -1,44 +1,48 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
 import styled from 'styled-components';
+import instagram from './image/insta.png';
+import github from './image/github.png';
+import linkedin from './image/link.png';
+
 interface Props {}
 
-const ListWrapper = styled.div`
+const ListWrapper = styled.div<Props>`
   display: flex;
   flex-direction: column;
   margin-left: auto;
-
   width: 70%;
-  @media (max-width: 760px) {
-    display: flex;
-    justify-content: center;
-  }
 
   @media (max-width: 660px) {
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
   }
 `;
 
 const ListStyles = styled.ul`
   display: flex;
-
+  justify-content: flex-end;
   li {
     padding: 0.5em;
+    transition: ${(props) => props.theme.transition.quickTransition};
   }
 
-  span {
-    font-size: 1.5rem;
+  span,
+  img {
+    font-size: 1.6rem;
     text-transform: capitalize;
+    transition: ${(props) => props.theme.transition.quickTransition};
+    padding: 0.5em;
+    &:hover {
+      color: ${({ theme }) => theme.colors.dark};
+      background: ${({ theme }) => theme.colors.white};
+    }
   }
-  @media (min-width: 760px) {
-    border: 2px solid red;
-    justify-content: flex-end;
-  }
-  @media (max-width: 760px) {
-    /* justify-content: flex-end; */
+  img {
+    width: 5rem;
   }
   @media (max-width: 660px) {
-    margin: 0 auto;
+    justify-content: center;
   }
 `;
 
@@ -61,17 +65,17 @@ const List: React.FC<Props> = () => {
     {
       name: 'github',
       path: '/',
-      icon: '',
+      icon: github,
     },
     {
       name: 'linkedin',
       path: '/about',
-      icon: '',
+      icon: linkedin,
     },
     {
-      name: 'facebook',
+      name: 'instagram',
       path: '/faq',
-      icon: '',
+      icon: instagram,
     },
   ]);
 
@@ -84,10 +88,11 @@ const List: React.FC<Props> = () => {
           </li>
         ))}
       </ListStyles>
+
       <ListStyles>
         {socialData.map((listItem) => (
           <li key={listItem.name}>
-            <span>{listItem.name}</span>
+            <img src={listItem.icon} />
           </li>
         ))}
       </ListStyles>

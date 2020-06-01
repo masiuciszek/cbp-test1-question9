@@ -23,7 +23,7 @@ const theme: DefaultTheme = {
   `,
   },
   colors: {
-    primary: '#334266',
+    primary: '#333',
     dark: '#2c213d',
     common: '#2e668b',
     secondary: '#298ca8',

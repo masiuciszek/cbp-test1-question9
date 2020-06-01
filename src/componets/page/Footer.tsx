@@ -21,11 +21,10 @@ const FooterStyles = styled.footer`
 `;
 
 const FooterTitle = styled.h3`
-  font-size: 3rem;
-  padding: 0.6em;
+  font-size: 2em;
 `;
 
-const Footer: React.FC<Props> = ({ title = "Styled component's" }) => {
+const Footer: React.FC<Props> = ({ title = 'Styled components' }) => {
   return (
     <FooterStyles>
       <FooterTitle>{title}</FooterTitle>
