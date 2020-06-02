@@ -23,10 +23,12 @@ const theme: DefaultTheme = {
   `,
   },
   colors: {
-    primary: '#333',
+    primary: '#2a2b31',
+    primaryShadow: 'rgba(42, 43, 49,.8)',
     dark: '#2c213d',
     common: '#2e668b',
     secondary: '#298ca8',
+    secondaryShadow: 'rgba(41, 140, 168, .8)',
     danger: '#ad5566',
     white: '#fff',
     offWhite: '#fefefe',

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import List from './List';
+import { below } from '../utils/media';
 
 interface Props {
   title?: string;
@@ -13,7 +14,7 @@ const FooterStyles = styled.footer`
   color: ${(props) => props.theme.colors.white};
   display: flex;
   align-items: center;
-  @media (max-width: 660px) {
+  @media ${below.tablet} {
     flex-direction: column;
     justify-content: center;
     align-items: center;

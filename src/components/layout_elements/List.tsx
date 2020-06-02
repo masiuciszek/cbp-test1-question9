@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import instagram from './image/insta.png';
 import github from './image/github.png';
 import linkedin from './image/link.png';
+import { below, above } from '../utils/media';
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
@@ -13,10 +15,14 @@ const ListWrapper = styled.div<Props>`
   margin-left: auto;
   width: 70%;
 
-  @media (max-width: 660px) {
+  @media ${below.tablet} {
     margin: 0 auto;
     width: 100%;
   }
+  /* @media (max-width: 660px) {
+    margin: 0 auto;
+    width: 100%;
+  } */
 `;
 
 const ListStyles = styled.ul`
@@ -27,12 +33,13 @@ const ListStyles = styled.ul`
     transition: ${(props) => props.theme.transition.quickTransition};
   }
 
-  span,
+  a,
   img {
     font-size: 1.6rem;
     text-transform: capitalize;
     transition: ${(props) => props.theme.transition.quickTransition};
     padding: 0.5em;
+    color: ${({ theme }) => theme.colors.white};
     &:hover {
       color: ${({ theme }) => theme.colors.dark};
       background: ${({ theme }) => theme.colors.white};
@@ -41,9 +48,12 @@ const ListStyles = styled.ul`
   img {
     width: 5rem;
   }
-  @media (max-width: 660px) {
+  @media ${below.tablet} {
     justify-content: center;
   }
+  /* @media (max-width: 660px) {
+    justify-content: center;
+  } */
 `;
 
 const List: React.FC<Props> = () => {
@@ -59,6 +69,10 @@ const List: React.FC<Props> = () => {
     {
       name: 'faq',
       path: '/faq',
+    },
+    {
+      name: 'contact',
+      path: '/contact',
     },
   ]);
   const [socialData, setSocialData] = React.useState<SocialData[]>([
@@ -84,7 +98,7 @@ const List: React.FC<Props> = () => {
       <ListStyles>
         {listData.map((listItem) => (
           <li key={listItem.name}>
-            <span>{listItem.name}</span>
+            <Link to={listItem.path}>{listItem.name}</Link>
           </li>
         ))}
       </ListStyles>

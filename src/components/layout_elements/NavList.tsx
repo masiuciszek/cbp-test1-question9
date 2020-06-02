@@ -1,24 +1,24 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { device } from '../utils/media';
+import { above, below } from '../utils/media';
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
 const StyledNavList = styled.ul`
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  display: none;
 
   li {
     padding: 1em;
     transition: ${(props) => props.theme.transition.quickTransition};
   }
-  span {
+  a {
     font-size: 1.6rem;
     text-transform: capitalize;
     transition: ${(props) => props.theme.transition.quickTransition};
     padding: 0.5em;
+    color: ${(props) => props.theme.colors.white};
     &:hover {
       color: ${({ theme }) => theme.colors.dark};
       background: ${({ theme }) => theme.colors.white};
@@ -41,8 +41,10 @@ const StyledNavList = styled.ul`
       transition: ${(props) => props.theme.transition.quickTransition};
     }
   }
-  @media${device.desktop}{
-    background:red;
+  @media ${above.tablet} {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 `;
 
@@ -60,13 +62,17 @@ const NavList: React.FC<Props> = () => {
       name: 'faq',
       path: '/faq',
     },
+    {
+      name: 'contact',
+      path: '/contact',
+    },
   ]);
   return (
     <StyledNavList>
       {navData.map(({ name, path }) => {
         return (
           <li key={name}>
-            <span>{name}</span>
+            <Link to={path}>{name}</Link>
           </li>
         );
       })}
