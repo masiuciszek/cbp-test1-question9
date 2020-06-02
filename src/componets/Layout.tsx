@@ -5,8 +5,8 @@ import styled, {
   DefaultTheme,
   createGlobalStyle,
 } from 'styled-components';
-import NavBar from './page/Navbar';
-import Footer from './page/Footer';
+import NavBar from './layout_elements/Navbar';
+import Footer from './layout_elements/Footer';
 
 const theme: DefaultTheme = {
   appSize: '10px',

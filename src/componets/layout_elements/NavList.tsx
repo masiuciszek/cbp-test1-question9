@@ -1,5 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { device } from '../utils/media';
+
 interface Props {}
 
 const StyledNavList = styled.ul`
@@ -38,6 +40,9 @@ const StyledNavList = styled.ul`
     &:after {
       transition: ${(props) => props.theme.transition.quickTransition};
     }
+  }
+  @media${device.desktop}{
+    background:red;
   }
 `;
 
