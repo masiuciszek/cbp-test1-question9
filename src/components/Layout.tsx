@@ -19,8 +19,7 @@ const theme: DefaultTheme = {
                 0 12.5px 10px rgba(0, 0, 0, 0.06),
                 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
                 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-                0 100px 80px rgba(0, 0, 0, 0.12)
-  `,
+                0 100px 80px rgba(0, 0, 0, 0.12)`,
   },
   colors: {
     primary: '#2a2b31',
@@ -79,18 +78,15 @@ const Layout: React.FC<Props> = ({ children }) => {
 
 const GlobalStyles = createGlobalStyle`
 
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap');
-
 *::before,*::after,* {
       margin: 0;
       padding: 0;
       box-sizing: inherit;
     }
 
-
     html {
       font-size: ${(props) => props.theme.appSize};
-      font-family: 'Open Sans Condensed', sans-serif;
+      font-family: 'Montserrat', sans-serif;
     }
 
     body {

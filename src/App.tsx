@@ -4,9 +4,9 @@ import Routes from './components/Routes';
 
 function App() {
   return (
-    <Layout>
+    <>
       <Routes />
-    </Layout>
+    </>
   );
 }
 
