@@ -1,8 +1,4 @@
-interface ListData {
+interface NavData {
   name: string;
   path: string;
-}
-
-interface SocialData extends ListData {
-  icon: string;
 }

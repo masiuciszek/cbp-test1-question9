@@ -1,0 +1,1 @@
+module.exports = require("/Users/masiuciszek/web-dev/levelup/styled_components/src/utils/typography")
