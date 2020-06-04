@@ -1,13 +1,14 @@
 /* eslint-disable quotes */
-import * as React from 'react';
-import { animated, useSpring } from 'react-spring';
-import styled from 'styled-components';
+import * as React from "react";
+import { animated, useSpring } from "react-spring";
+import styled from "styled-components";
 import {
   positionRight,
   positionLeft,
-} from '@/components/styled/styled_utils/position';
-import { Link } from 'gatsby';
-import { flexStyles } from '@/components/styled/styled_utils/helpers';
+} from "@/components/styled/styled_utils/position";
+import { Link } from "gatsby";
+import { flexStyles } from "@/components/styled/styled_utils/helpers";
+import { above } from "@/components/styled/styled_utils/media";
 
 interface Props {
   navData: NavData[];
@@ -18,14 +19,27 @@ const Left = styled(animated.div)`
   width: 45%;
   height: 100vh;
   background: ${({ theme }) => theme.colors.primaryShadow};
+  ${flexStyles(`column`, `center`, `center`)};
   ${positionLeft(`absolute`, `0`, `0`)}
+  ${above.medium` display: none;`}
+  h1,p {
+    color: ${({ theme }) => theme.colors.white};
+  }
+  h1 {
+    font-size: 2em;
+  }
+  p {
+    font-size: 19px;
+  }
 `;
+
 const Right = styled(animated.div)`
   width: 55%;
   height: 100vh;
   background: ${({ theme }) => theme.colors.secondaryShadow};
   ${positionRight(`absolute`, `0`, `0`)}
   ${flexStyles(`flex`, `center`, `center`)};
+  ${above.medium` display: none;`}
 `;
 
 const RightList = styled.ul`
@@ -40,7 +54,7 @@ const RightList = styled.ul`
     color: ${({ theme }) => theme.colors.white};
     font-size: 2em;
     text-transform: capitalize;
-    text-align: center;
+    text-align: left;
     transition: ${({ theme }) => theme.transition.quickTransition};
     padding: 0.35em;
     display: block;
@@ -52,9 +66,9 @@ const RightList = styled.ul`
 `;
 
 const AnimationList: React.FC<Props> = ({ navData, on }) => {
-  const { x } = useSpring({
-    x: on ? 100 : 0,
-    // opacity: on ? 1 : 0,
+  const { x, opacity } = useSpring({
+    x: on ? 0 : 100,
+    opacity: on ? 1 : 0,
     // zIndex: on ? 1 : 0,
   });
   return (
@@ -62,13 +76,16 @@ const AnimationList: React.FC<Props> = ({ navData, on }) => {
       <Left
         style={{
           transform: x.interpolate((x) => `translate3d(${x * -1}%,0,0)`),
+          opacity,
         }}
       >
-        <h1>Left</h1>
+        <h1>Marcell Ciszek</h1>
+        <p>Simple Gatsby Application</p>
       </Left>
       <Right
         style={{
           transform: x.interpolate((x) => `translate3d(${x}%,0,0)`),
+          opacity,
         }}
       >
         <RightList>
