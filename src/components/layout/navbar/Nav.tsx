@@ -35,8 +35,8 @@ const Nav: React.FC<Props> = ({ className, title = 'App Title' }) => {
       path: '/about',
     },
     {
-      name: 'faq',
-      path: '/faq',
+      name: 'blog',
+      path: '/blog',
     },
     {
       name: 'contact',
@@ -70,7 +70,7 @@ export default styled(Nav)`
     ${positionRight('absolute', '2', '2')};
     cursor: pointer;
     display: none;
-    z-index: 3;
+    z-index: 5;
     ${below.medium` display: block `};
     transition: ${(props) => props.theme.transition.quickTransition};
     &:hover {

@@ -3,11 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&display=swap');
 
-/* font-family: 'Pacifico', cursive; */
-
-/* font-family: 'Satisfy', cursive; */
 
 *::before,*::after,* {
       margin: 0;

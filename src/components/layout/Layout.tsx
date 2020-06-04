@@ -65,7 +65,7 @@ const Main = styled.main`
 `;
 
 export const PageWrapper = styled.div`
-  margin: 0 auto;
+  margin: 2rem auto;
   max-width: ${(props) => props.theme.sizes.maxWidth};
 `;
 

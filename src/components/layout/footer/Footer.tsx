@@ -8,11 +8,16 @@ interface Props {
 
 const FooterTitle = styled(NavTitle)``;
 
-const Footer: React.FC<Props> = ({ className }) => (
-  <footer className={className}>
-    <FooterTitle> Footer </FooterTitle>
-  </footer>
-);
+const Footer: React.FC<Props> = ({ className }) => {
+  const date = new Date();
+  return (
+    <footer className={className}>
+      <FooterTitle>
+        Footer {date.getFullYear()}/{date.getMonth()}/{date.getUTCDay()}
+      </FooterTitle>
+    </footer>
+  );
+};
 
 export default styled(Footer)`
   padding: 1.5em 0.5em;

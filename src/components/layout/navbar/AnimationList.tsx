@@ -66,9 +66,10 @@ const RightList = styled.ul`
 `;
 
 const AnimationList: React.FC<Props> = ({ navData, on }) => {
-  const { x, opacity } = useSpring({
+  const { x, opacity, zIndex } = useSpring({
     x: on ? 0 : 100,
     opacity: on ? 1 : 0,
+    zIndex: on ? 3 : 0,
   });
   return (
     <>
@@ -76,6 +77,7 @@ const AnimationList: React.FC<Props> = ({ navData, on }) => {
         style={{
           transform: x.interpolate((x) => `translate3d(${x * -1}%,0,0)`),
           opacity,
+          zIndex,
         }}
       >
         <h1>Marcell Ciszek</h1>
@@ -85,6 +87,7 @@ const AnimationList: React.FC<Props> = ({ navData, on }) => {
         style={{
           transform: x.interpolate((x) => `translate3d(${x}%,0,0)`),
           opacity,
+          zIndex,
         }}
       >
         <RightList>

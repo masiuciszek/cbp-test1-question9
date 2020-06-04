@@ -28,7 +28,7 @@ const Hero: React.FC<Props> = ({ className, children, img, home }) => {
   } = useStaticQuery<HeroQuery>(
     graphql`
       {
-        heroBg: file(relativePath: { eq: "beach.jpg" }) {
+        heroBg: file(relativePath: { eq: "city.jpeg" }) {
           childImageSharp {
             fluid(quality: 90, maxWidth: 4160) {
               ...GatsbyImageSharpFluid_withWebp

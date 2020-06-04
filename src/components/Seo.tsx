@@ -2,7 +2,9 @@ import * as React from 'react';
 import Helmet from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 
-interface Props {
+interface Props {}
+
+interface Query {
   site: {
     siteMetadata: {
       title: string;
@@ -40,9 +42,9 @@ const GET_SEO_DATA = graphql`
   }
 `;
 
-const Seo: React.FC = () => {
-  // const { site } = useStaticQuery<Props>(GET_SEO_DATA);
-  let a;
+const Seo: React.FC<Props> = () => {
+  const x = useStaticQuery<Query>(GET_SEO_DATA);
+
   return (
     <>
       <Helmet>
