@@ -35,7 +35,7 @@ const BlogItem: React.FC<Props> = ({ data }) => {
 
   return (
     <StyledBlogItem>
-      <Link to={`/blog/${path}`}>
+      <Link to={`/blog${path}`}>
         {` `}
         <h3>{title}</h3>
         {` `}
