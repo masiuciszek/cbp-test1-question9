@@ -1,14 +1,14 @@
-/* eslint-disable quotes */
-import * as React from "react";
-import { animated, useSpring } from "react-spring";
-import styled from "styled-components";
+/* eslint-disable @typescript-eslint/quotes */
+import * as React from 'react';
+import { animated, useSpring } from 'react-spring';
+import styled from 'styled-components';
 import {
   positionRight,
   positionLeft,
-} from "@/components/styled/styled_utils/position";
-import { Link } from "gatsby";
-import { flexStyles } from "@/components/styled/styled_utils/helpers";
-import { above } from "@/components/styled/styled_utils/media";
+} from '@/components/styled/styled_utils/position';
+import { Link } from 'gatsby';
+import { flexStyles } from '@/components/styled/styled_utils/helpers';
+import { above } from '@/components/styled/styled_utils/media';
 
 interface Props {
   navData: NavData[];
@@ -19,8 +19,8 @@ const Left = styled(animated.div)`
   width: 45%;
   height: 100vh;
   background: ${({ theme }) => theme.colors.primaryShadow};
-  ${flexStyles(`column`, `center`, `center`)};
-  ${positionLeft(`absolute`, `0`, `0`)}
+  ${flexStyles('column', 'center', 'center')};
+  ${positionLeft('absolute', '0', '0')}
   ${above.medium` display: none;`}
   h1,p {
     color: ${({ theme }) => theme.colors.white};
@@ -37,15 +37,15 @@ const Right = styled(animated.div)`
   width: 55%;
   height: 100vh;
   background: ${({ theme }) => theme.colors.secondaryShadow};
-  ${positionRight(`absolute`, `0`, `0`)}
-  ${flexStyles(`flex`, `center`, `center`)};
+  ${positionRight('absolute', '0', '0')}
+  ${flexStyles('flex', 'center', 'center')};
   ${above.medium` display: none;`}
 `;
 
 const RightList = styled.ul`
   width: 100%;
   padding: 1em;
-  ${flexStyles(`column`, `center`, `center`)};
+  ${flexStyles('column', 'center', 'center')};
   li {
     padding: 0.2em;
     width: 100%;

@@ -19,25 +19,17 @@
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write"
   },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "./src/**/*.{ts,js,jsx,tsx}": [
-      "yarn lint --fix",
-      "yarn format"
-    ]
-  },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.22.5",
+    "gatsby-background-image": "^1.1.1",
     "gatsby-plugin-react-helmet": "^3.3.3",
+    "gatsby-plugin-sharp": "^2.6.10",
     "gatsby-plugin-styled-components": "^3.3.3",
     "gatsby-plugin-typography": "^2.5.3",
+    "gatsby-source-filesystem": "^2.3.10",
+    "gatsby-transformer-remark": "^2.8.14",
+    "gatsby-transformer-sharp": "^2.5.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",

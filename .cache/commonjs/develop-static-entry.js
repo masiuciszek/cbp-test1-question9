@@ -112,7 +112,7 @@ var _default = (pagePath, callback) => {
     pathname: pagePath
   });
 
-  const htmlElement = _react.default.createElement(Html, { ...bodyProps,
+  const htmlElement = /*#__PURE__*/_react.default.createElement(Html, { ...bodyProps,
     body: ``,
     headComponents: headComponents.concat([/*#__PURE__*/_react.default.createElement("script", {
       key: `io`,

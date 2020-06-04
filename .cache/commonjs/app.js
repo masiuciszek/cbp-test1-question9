@@ -43,7 +43,7 @@ window.___loader = _loader.publicLoader; // Let the site/plugins run code very e
 
   fetch(`/___services`).then(res => res.json()).then(services => {
     if (services.developstatusserver) {
-      const parentSocket = (0, _socket.default)(`${window.location.protocol}//${window.location.hostname}:${services.developstatusserver.port}`);
+      const parentSocket = (0, _socket.default)(`http://${window.location.hostname}:${services.developstatusserver.port}`);
       parentSocket.on(`develop:needs-restart`, msg => {
         if (window.confirm(`The develop process needs to be restarted for the changes to ${msg.dirtyFile} to be applied.\nDo you want to restart the develop process now?`)) {
           parentSocket.once(`develop:is-starting`, msg => {

@@ -203,7 +203,7 @@ function init() {
 class RouteAnnouncer extends _react.default.Component {
   constructor(props) {
     super(props);
-    this.announcementRef = _react.default.createRef();
+    this.announcementRef = /*#__PURE__*/_react.default.createRef();
   }
 
   componentDidUpdate(prevProps, nextProps) {
