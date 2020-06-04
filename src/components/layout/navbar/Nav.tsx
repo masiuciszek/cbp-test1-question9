@@ -62,6 +62,7 @@ export default styled(Nav)`
   background: ${(props) => props.theme.colors.primary};
   padding: 1em 1em;
   position: relative;
+
   ${flexStyles('row', 'space-between', 'center')}
 
   #navIcon {

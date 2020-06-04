@@ -11,11 +11,10 @@ interface Props {
 const LargeListStyles = styled.ul`
   display: flex;
   justify-content: flex-end;
-
   align-items: center;
   height: 100%;
   width: 60%;
-  padding: 0.5em;
+  padding: 0.5rem;
   li {
     padding: 0.5em;
   }

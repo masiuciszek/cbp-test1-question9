@@ -69,7 +69,6 @@ const AnimationList: React.FC<Props> = ({ navData, on }) => {
   const { x, opacity } = useSpring({
     x: on ? 0 : 100,
     opacity: on ? 1 : 0,
-    // zIndex: on ? 1 : 0,
   });
   return (
     <>

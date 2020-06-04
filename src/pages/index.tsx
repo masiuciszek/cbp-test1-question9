@@ -17,8 +17,9 @@ const Home: React.FC<PageProps<Props>> = ({ data }) => {
   const { title, description } = data.site.siteMetadata;
   return (
     <Layout title="Home" description="Home page">
-      <Title msg={title} desc={description} />
-      <Hero className="Hero" />
+      <Hero className="Hero" home>
+        <Title text={title} desc={description} />
+      </Hero>
     </Layout>
   );
 };
