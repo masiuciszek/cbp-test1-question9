@@ -4,6 +4,9 @@ var plugins = [{
     },{
       plugin: require('/Users/masiuciszek/web-dev/levelup/styled_components/node_modules/gatsby-plugin-typography/gatsby-ssr'),
       options: {"plugins":[],"pathToConfigModule":"src/utils/typography"},
+    },{
+      plugin: require('/Users/masiuciszek/web-dev/levelup/styled_components/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
+      options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [

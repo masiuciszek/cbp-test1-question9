@@ -1,12 +1,16 @@
+/* eslint-disable quotes */
 /* eslint-disable @typescript-eslint/quotes */
 import * as React from "react";
 import styled, { ThemeProvider, DefaultTheme } from "styled-components";
+import { Helmet } from "react-helmet";
 import GlobalStyles from "./GlobalStyles";
 import Nav from "./navbar/Nav";
 import Footer from "./footer/Footer";
 
 interface Props {
   children: React.ReactNode;
+  title: string;
+  description: string;
 }
 
 const theme: DefaultTheme = {
@@ -62,9 +66,18 @@ const Main = styled.main`
   width: 100%;
 `;
 
-const Layout: React.FC<Props> = ({ children }) => (
+const Layout: React.FC<Props> = ({ children, title, description }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
+    <Helmet>
+      <meta charSet="utf-8" />
+      <meta name="description" content={description} />
+      <title>{title}</title>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap"
+        rel="stylesheet"
+      />
+    </Helmet>
     <Nav className="nav" title="Marcell Ciszek" />
     <Page>
       <Main>{children}</Main>

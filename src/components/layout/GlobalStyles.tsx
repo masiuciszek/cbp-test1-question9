@@ -1,6 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
+/* eslint-disable quotes */
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&display=swap');
 
 /* font-family: 'Pacifico', cursive; */
@@ -14,10 +16,11 @@ export default createGlobalStyle`
     }
     html {
       font-size: ${(props) => props.theme.appSize};
-      /* font-family: 'Montserrat', sans-serif; */
+      font-family: 'Montserrat', sans-serif;
     }
     body {
       box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
       padding: 0;
       margin: 0;
       font-size: 1.5rem;
