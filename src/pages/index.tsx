@@ -18,7 +18,7 @@ const Home: React.FC<PageProps<Props>> = ({ data }) => {
   return (
     <Layout title="Home" description="Home page">
       <Hero className="Hero" home>
-        <Title text={title} desc={description} />
+        <Title text={title} desc={description} cta />
       </Hero>
     </Layout>
   );

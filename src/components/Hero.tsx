@@ -8,14 +8,14 @@ import { useStaticQuery, graphql } from 'gatsby';
 interface Props {
   className: string;
   children: React.ReactNode;
-  img?: string;
+  img?: IFluidObject;
   home?: boolean;
 }
 
 interface HeroQuery {
   heroBg: {
     childImageSharp: {
-      fluid: IFluidObject | any;
+      fluid: IFluidObject;
     };
   };
 }
@@ -40,7 +40,7 @@ const Hero: React.FC<Props> = ({ className, children, img, home }) => {
   );
 
   return (
-    <BackgroundImage className={className} fluid={fluid || img} home={home}>
+    <BackgroundImage className={className} fluid={img || fluid} home={home}>
       {children}
     </BackgroundImage>
   );
