@@ -63,7 +63,7 @@ export default styled(Nav)`
   padding: 1em 1em;
   position: relative;
 
-  ${flexStyles('row', 'space-between', 'center')}
+  ${flexStyles('flex', 'space-between', 'center')}
 
   #navIcon {
     color: ${(props) => props.theme.colors.white};
@@ -74,7 +74,7 @@ export default styled(Nav)`
     ${below.medium` display: block `};
     transition: ${(props) => props.theme.transition.quickTransition};
     &:hover {
-      color: ${(props) => props.theme.colors.cinnamon};
+      color: ${(props) => props.theme.colors.common};
     }
   }
 

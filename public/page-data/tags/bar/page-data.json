@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-single-tag-tsx","path":"/tags/bar","result":{"pageContext":{"posts":[{"frontmatter":{"path":"/first","title":"First post","tags":["foo","bar"]}},{"frontmatter":{"path":"/second","title":"Second post","tags":["foo","bar","bazz"]}}],"tag":"bar"}}}

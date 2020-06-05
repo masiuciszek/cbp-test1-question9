@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import Layout from '@/components/layout/Layout';
 
 const StyledBlogPost = styled.section`
+  min-height: calc(100vh - 300px);
   #title {
     font-size: 3rem;
     padding: 2rem;
@@ -16,7 +18,7 @@ const BlogStyles = styled.article`
   margin: 0 auto;
   p {
     font-size: 18px;
-    line-height: 2rem;
+    line-height: 3rem;
   }
 `;
 
@@ -60,14 +62,16 @@ const BlogPost: React.FC<DataPageContext> = ({ data, pageContext }) => {
   const { next, prev } = pageContext;
 
   return (
-    <StyledBlogPost>
-      <h1 id="title"> {title} </h1>
-      <BlogStyles dangerouslySetInnerHTML={{ __html: html }} />
-      <Links>
-        {prev && <Link to={`/blog${prev.frontmatter.path}`}>←Prev</Link>}
-        {next && <Link to={`/blog${next.frontmatter.path}`}>Next →</Link>}
-      </Links>
-    </StyledBlogPost>
+    <Layout title={`Blog post ${title}`} description="Blog post item">
+      <StyledBlogPost>
+        <h1 id="title"> {title} </h1>
+        <BlogStyles dangerouslySetInnerHTML={{ __html: html }} />
+        <Links>
+          {prev && <Link to={`/blog${prev.frontmatter.path}`}>←Prev</Link>}
+          {next && <Link to={`/blog${next.frontmatter.path}`}>Next →</Link>}
+        </Links>
+      </StyledBlogPost>
+    </Layout>
   );
 };
 

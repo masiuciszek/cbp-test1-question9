@@ -10,6 +10,7 @@ exports.components = {
   "component---src-pages-index-tsx": () => import("./../src/pages/index.tsx" /* webpackChunkName: "component---src-pages-index-tsx" */),
   "component---src-templates-all-tags-tsx": () => import("./../src/templates/allTags.tsx" /* webpackChunkName: "component---src-templates-all-tags-tsx" */),
   "component---src-templates-blog-list-tsx": () => import("./../src/templates/blogList.tsx" /* webpackChunkName: "component---src-templates-blog-list-tsx" */),
-  "component---src-templates-blog-post-tsx": () => import("./../src/templates/blogPost.tsx" /* webpackChunkName: "component---src-templates-blog-post-tsx" */)
+  "component---src-templates-blog-post-tsx": () => import("./../src/templates/blogPost.tsx" /* webpackChunkName: "component---src-templates-blog-post-tsx" */),
+  "component---src-templates-single-tag-tsx": () => import("./../src/templates/singleTag.tsx" /* webpackChunkName: "component---src-templates-single-tag-tsx" */)
 }
 

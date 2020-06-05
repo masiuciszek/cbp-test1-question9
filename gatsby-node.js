@@ -33,6 +33,18 @@ const createTagPages = (createPage, posts) => {
       tags: tags.sort(),
     },
   });
+
+  tags.forEach((tag) => {
+    const posts = postsByTag[tag];
+    createPage({
+      path: `/tags/${tag}`,
+      component: singleTagIndexTemplate,
+      context: {
+        posts,
+        tag,
+      },
+    });
+  });
 };
 
 exports.createPages = ({ graphql, actions }) => {

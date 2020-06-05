@@ -13,6 +13,7 @@ exports.components = {
   "component---src-pages-index-tsx": hot(preferDefault(require("/Users/masiuciszek/web-dev/levelup/styled_components/src/pages/index.tsx"))),
   "component---src-templates-all-tags-tsx": hot(preferDefault(require("/Users/masiuciszek/web-dev/levelup/styled_components/src/templates/allTags.tsx"))),
   "component---src-templates-blog-list-tsx": hot(preferDefault(require("/Users/masiuciszek/web-dev/levelup/styled_components/src/templates/blogList.tsx"))),
-  "component---src-templates-blog-post-tsx": hot(preferDefault(require("/Users/masiuciszek/web-dev/levelup/styled_components/src/templates/blogPost.tsx")))
+  "component---src-templates-blog-post-tsx": hot(preferDefault(require("/Users/masiuciszek/web-dev/levelup/styled_components/src/templates/blogPost.tsx"))),
+  "component---src-templates-single-tag-tsx": hot(preferDefault(require("/Users/masiuciszek/web-dev/levelup/styled_components/src/templates/singleTag.tsx")))
 }
 

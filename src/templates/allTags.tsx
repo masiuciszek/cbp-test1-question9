@@ -41,21 +41,18 @@ const Tags = styled.div`
   }
 `;
 
-const AllTags: React.FC<Props> = ({ data, pageContext }) => {
-  console.log(data);
-  return (
-    <Layout title="Tags" description="all tags">
-      <StyledTagsWrapper>
-        <h1> All Tags </h1>
-        <Tags>
-          {pageContext.tags.map((tag) => (
-            <Link key={tag} to={`/tags/${tag}`}>
-              #{tag}
-            </Link>
-          ))}
-        </Tags>
-      </StyledTagsWrapper>
-    </Layout>
-  );
-};
+const AllTags: React.FC<Props> = ({ data, pageContext }) => (
+  <Layout title="Tags" description="all tags">
+    <StyledTagsWrapper>
+      <h1> All Tags </h1>
+      <Tags>
+        {pageContext.tags.map((tag) => (
+          <Link key={tag} to={`/tags/${tag}`}>
+            #{tag}
+          </Link>
+        ))}
+      </Tags>
+    </StyledTagsWrapper>
+  </Layout>
+);
 export default AllTags;

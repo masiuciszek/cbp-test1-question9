@@ -5,6 +5,7 @@ import Layout, { PageWrapper } from '@/components/layout/Layout';
 import BlogItem from '@/components/blog/BlogItem';
 import styled from 'styled-components';
 import { flexStyles } from '@/components/styled/styled_utils/helpers';
+import BlogsLink from '@/components/BlogsLink';
 
 type Node = {
   node: {
@@ -23,7 +24,6 @@ const BlogStyles = styled.div`
   height: 100%;
   ${flexStyles('column', 'center', 'center')};
 `;
-
 const Blog: React.FC<PageProps<Props>> = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
 
@@ -34,6 +34,7 @@ const Blog: React.FC<PageProps<Props>> = ({ data }) => {
           {edges.map(({ node: { frontmatter } }) => (
             <BlogItem key={frontmatter.title} data={frontmatter} />
           ))}
+          <BlogsLink />
         </BlogStyles>
       </PageWrapper>
     </Layout>
