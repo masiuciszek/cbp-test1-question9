@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
@@ -33,11 +33,32 @@ const Links = styled.div`
   }
 `;
 
-const BlogPost = ({ data, pageContext }) => {
+interface Data {
+  markdownRemark: {
+    html: string;
+    frontmatter: {
+      title: string;
+    };
+  };
+}
+
+interface PageContext {
+  index: number;
+  next: null | { frontmatter: { path: string } };
+  prev: null | { frontmatter: { path: string } };
+  pathSlug: string;
+}
+
+interface DataPageContext {
+  data: Data;
+  pageContext: PageContext;
+}
+
+const BlogPost: React.FC<DataPageContext> = ({ data, pageContext }) => {
   const { title } = data.markdownRemark.frontmatter;
   const { html } = data.markdownRemark;
   const { next, prev } = pageContext;
-  console.log(next, prev);
+
   return (
     <StyledBlogPost>
       <h1 id="title"> {title} </h1>

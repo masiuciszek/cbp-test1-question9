@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 
@@ -5,7 +6,8 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const blogPostTemplate = path.resolve('src/templates/blogPost.js');
+    const blogListTemplate = path.resolve('src/templates/blogList.tsx');
+    const blogPostTemplate = path.resolve('src/templates/blogPost.tsx');
 
     resolve(
       graphql(
@@ -26,8 +28,21 @@ exports.createPages = ({ graphql, actions }) => {
         `,
       ).then((result) => {
         const posts = result.data.allMarkdownRemark.edges;
+        const postsPerPage = 6;
+        const numPages = Math.ceil(posts.length / postsPerPage);
         posts.forEach(({ node }, index) => {
           const { path } = node.frontmatter;
+
+          createPage({
+            path: index === 0 ? '/bloglist' : `/bloglist/${index + 1}`,
+            component: blogListTemplate,
+            context: {
+              limit: postsPerPage,
+              skip: index * postsPerPage,
+              numPages,
+              currentPage: index + 1,
+            },
+          });
 
           createPage({
             path: `/blog${path}`,
