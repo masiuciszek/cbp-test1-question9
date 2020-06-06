@@ -2,7 +2,7 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'Legionista',
+    title: 'Gatsby Blog',
     description: 'Simple app using styled components and Gatsby',
     siteUrl: 'https://masiuciszek.com',
     image: `https://images.unsplash.com/photo-1525183995014-bd94c0750cd5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80`,

@@ -6,6 +6,8 @@ interface NavData {
 interface Content {
   id: number;
   text: string;
+  img: string;
+  blackQuote: string;
 }
 
 interface FrontMatter {

@@ -24,7 +24,13 @@ const AboutPage: React.FC<PageProps<AboutProps>> = ({ data }) => {
   return (
     <Layout title="About" description="About page">
       <Hero img={fluid} className="abouthero">
-        <Title text="About" desc="About this application" cta padding />
+        <Title
+          text="About"
+          desc="About this application"
+          cta
+          padding
+          bg="rgba(0,0,0,0.1)"
+        />
       </Hero>
       <PageWrapper>
         <Content />

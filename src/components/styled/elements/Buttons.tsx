@@ -17,9 +17,10 @@ export const CtaLink = styled(Link)<CtaLinkProps>`
   display: block;
   text-align: center;
   padding: 0.4rem 0.8rem;
-  transition: ${(props) => props.theme.transition.mainTransition};
+  transition: ${(props) => props.theme.transition.quickTransition};
   &:hover {
     color: ${(props) => props.theme.colors.white};
-    background: ${(props) => props.theme.colors.primary};
+    background: ${(props) => props.theme.colors.secondaryShadow};
+    width: 12.6rem;
   }
 `;

@@ -22,14 +22,19 @@ const Left = styled(animated.div)`
   ${flexStyles('column', 'center', 'center')};
   ${positionLeft('absolute', '0', '0')}
   ${above.medium` display: none;`}
-  h1,p {
+    h1,p {
     color: ${({ theme }) => theme.colors.white};
   }
   h1 {
     font-size: 2em;
+    text-shadow: 1px 2px 3px #333;
+    font-family: 'Caveat', cursive;
   }
   p {
     font-size: 19px;
+    text-align: center;
+    text-shadow: 1px 2px 3px #333;
+    /* font-family: 'Caveat', cursive; */
   }
 `;
 
@@ -58,6 +63,8 @@ const RightList = styled.ul`
     transition: ${({ theme }) => theme.transition.quickTransition};
     padding: 0.35em;
     display: block;
+    text-shadow: 1px 2px 3px #333;
+    font-family: 'Caveat', cursive;
     &:hover {
       padding: 0.3em;
       border-bottom: 2px solid ${({ theme }) => theme.colors.white};

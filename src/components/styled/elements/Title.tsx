@@ -9,6 +9,7 @@ interface Props {
   cta?: boolean;
   desc?: string;
   padding?: boolean;
+  bg?: string;
 }
 
 interface StyledProps {
@@ -33,8 +34,8 @@ const StyledTitle = styled.div<StyledProps>`
   }
 `;
 
-const Title: React.FC<Props> = ({ text, desc, cta, padding }) => (
-  <StyledTitle padding={padding}>
+const Title: React.FC<Props> = ({ text, desc, cta, padding, bg }) => (
+  <StyledTitle padding={padding} bg={bg}>
     <h3>{text}</h3>
     {desc && <p>{desc}</p>}
     {cta && <CtaLink to="/blog">Blog</CtaLink>}

@@ -1,1 +1,1 @@
-module.exports = require("/Users/masiuciszek/web-dev/levelup/styled_components/src/utils/typography")
+module.exports = require("/Users/masiuciszek/web-dev/levelup/styled-componets-gatsby-blog/src/utils/typography")

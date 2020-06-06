@@ -24,11 +24,11 @@ const theme: DefaultTheme = {
     ],
   },
   colors: {
-    primary: '#2a2b31',
-    primaryShadow: 'rgba(42, 43, 49,.8)',
+    primary: '#212121',
+    primaryShadow: 'rgba(42, 43, 49,.9)',
     common: '#1B76FF',
     secondary: '#4991ff',
-    secondaryShadow: 'rgba(13, 71, 161, .8)',
+    secondaryShadow: 'rgba(13, 71, 161, .9)',
     danger: '#F9627D',
     cinnamon: '#C65B7C',
     byz: '#0D47A1',
@@ -79,6 +79,10 @@ const Layout: React.FC<Props> = ({ children, title, description }) => (
       <title>{title}</title>
       <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
         rel="stylesheet"
       />
     </Helmet>
