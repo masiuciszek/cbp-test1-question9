@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { contentData } from '@/utils/data';
+import { below, above } from './styled/styled_utils/media';
 
 const Article = styled.article`
   #title {
@@ -22,11 +23,13 @@ interface BgImgProps {
 const BgImg = styled.div<BgImgProps>`
   width: 100%;
   height: 360px;
-  background-image: ${(props) => props.img && `url(${props.img})`};
+  background: ${(props) =>
+    props.img && `url(${props.img})`} center center no-repeat;
+  /* background-image: ${(props) => props.img && `url(${props.img})`}; */
   background-attachment: fixed;
-  background-position: center;
   margin: 4rem 0;
   position: relative;
+  ${(props) => props.theme.shadows.elevations[1]};
   &:after {
     content: '';
     top: 0;
@@ -36,6 +39,10 @@ const BgImg = styled.div<BgImgProps>`
     width: 100%;
     height: 100%;
   }
+  ${below.medium`
+    background-attachment: local;
+    background-position: top bottom;
+  `}
 `;
 
 const BlackQuote = styled.blockquote`
@@ -46,6 +53,9 @@ const BlackQuote = styled.blockquote`
   margin-left: 5rem;
   width: 80%;
   border-left: 3px solid ${(props) => props.theme.colors.primary};
+  ${below.medium`
+    font-size: 4rem;
+  `}
 `;
 
 const Content: React.FC = () => {

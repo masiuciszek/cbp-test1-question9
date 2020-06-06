@@ -29,12 +29,12 @@ const Left = styled(animated.div)`
     font-size: 2em;
     text-shadow: 1px 2px 3px #333;
     font-family: 'Caveat', cursive;
+    text-align: center;
   }
   p {
     font-size: 19px;
     text-align: center;
     text-shadow: 1px 2px 3px #333;
-    /* font-family: 'Caveat', cursive; */
   }
 `;
 
