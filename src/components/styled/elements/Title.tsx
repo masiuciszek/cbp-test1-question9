@@ -38,7 +38,11 @@ const Title: React.FC<Props> = ({ text, desc, cta, padding, bg }) => (
   <StyledTitle padding={padding} bg={bg}>
     <h3>{text}</h3>
     {desc && <p>{desc}</p>}
-    {cta && <CtaLink to="/blog">Blog</CtaLink>}
+    {cta && (
+      <CtaLink cl="#fff" to="/blog">
+        Blog
+      </CtaLink>
+    )}
   </StyledTitle>
 );
 

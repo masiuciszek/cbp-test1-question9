@@ -64,8 +64,10 @@ const Main = styled.main`
   flex-grow: 1 auto;
   width: 100%;
 `;
-
-export const PageWrapper = styled.div`
+interface PageWrapperProps {
+  medSize?: boolean;
+}
+export const PageWrapper = styled.div<PageWrapperProps>`
   margin: 2rem auto;
   max-width: ${(props) => props.theme.sizes.maxWidth};
 `;

@@ -52,6 +52,10 @@ const TagList = styled.ul`
   a {
     font-size: 2rem;
     color: ${({ theme }) => theme.colors.primary};
+    font-family: 'Caveat', cursive;
+    font-size: 3rem;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
+    padding: 0.6rem;
   }
 `;
 

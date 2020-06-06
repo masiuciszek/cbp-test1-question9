@@ -2,7 +2,7 @@
 path: '/fifth'
 date: '2020-06-06'
 title: 'fifth post'
-tags: ['js', 'cool']
+tags: ['js', 'cool', 'bazz']
 excerpt: 'A preview of my fifth post'
 ---
 

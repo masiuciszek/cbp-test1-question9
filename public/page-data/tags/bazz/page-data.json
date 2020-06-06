@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-templates-single-tag-tsx","path":"/tags/bazz","result":{"pageContext":{"posts":[{"frontmatter":{"path":"/second","title":"Second post","tags":["foo","bar","bazz"]}}],"tag":"bazz"}}}
+{"componentChunkName":"component---src-templates-single-tag-tsx","path":"/tags/bazz","result":{"pageContext":{"posts":[{"frontmatter":{"path":"/second","title":"Second post","tags":["foo","bar","bazz"]}},{"frontmatter":{"path":"/fifth","title":"fifth post","tags":["js","cool","bazz"]}}],"tag":"bazz"}}}

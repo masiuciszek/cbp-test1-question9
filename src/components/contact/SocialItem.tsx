@@ -15,12 +15,31 @@ interface Props {
 }
 
 const StyledSocialItem = styled.div`
-  border: 2px solid red;
   max-width: 35rem;
   ${flexStyles(`flex`, `center`, `center`)};
-  h3 {
+  margin: 0.5rem auto;
+  ${(props) => props.theme.shadows.elevations[1]};
+  transform: ${(props) => props.theme.transition.quickTransition};
+  a {
     font-size: 3rem;
     font-family: 'Caveat', cursive;
+    display: block;
+    color: ${(props) => props.theme.colors.primary};
+    margin: 0 1.5rem;
+    flex-basis: 80%;
+    flex: 1;
+  }
+  .gatsby-image-wrapper {
+    height: 5rem !important;
+    width: 5rem !important;
+  }
+
+  &:hover {
+    ${(props) => props.theme.shadows.elevations[2]};
+    background: ${(props) => props.theme.colors.secondaryShadow};
+    a {
+      color: ${(props) => props.theme.colors.white};
+    }
   }
 `;
 
@@ -29,7 +48,19 @@ const SocialItem: React.FC<Props> = ({ data }) => {
   const { childImageSharp } = data;
   return (
     <StyledSocialItem>
-      <h3> {name} </h3> <Img fixed={childImageSharp.fixed} />
+      <a
+        href={`https://${name}${
+          name !== `masiuciszek` ? `.com/masiuciszek` : `.com`
+        } `}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {` `}
+        {name}
+        {` `}
+      </a>
+      {` `}
+      <Img fixed={childImageSharp.fixed} />
     </StyledSocialItem>
   );
 };

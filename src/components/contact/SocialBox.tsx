@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { IFixedObject } from 'gatsby-background-image';
 import styled from 'styled-components';
 import SocialItem from './SocialItem';
+import { below } from '../styled/styled_utils/media';
 
 interface Props {}
 
@@ -21,8 +22,10 @@ interface SocialQuery {
 }
 
 const SocialBoxStyles = styled.div`
-  width: 50%;
-  border: 3px solid red;
+  flex: 1;
+  ${below.medium`
+      width: 100%;
+  `}
 `;
 
 const SocialBox: React.FC<Props> = () => {
