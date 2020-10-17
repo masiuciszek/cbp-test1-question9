@@ -1,4 +1,4 @@
-# server-graphql
+# graphql-server
 
 ## Table of Contents
 

@@ -1,29 +1,6 @@
 import { ApolloServer } from "apollo-server"
-import gql from "graphql-tag"
-
-const typeDefs = gql`
-  type User {
-    email: String! #Not null
-    name: String!
-    friends: [User]! #array should not be null
-  }
-
-  type Query {
-    me: User!
-  }
-`
-
-const resolvers = {
-  Query: {
-    me() {
-      return {
-        email: "someemail@example.com",
-        name: "Mike smith",
-        friends: [],
-      }
-    },
-  },
-}
+import typeDefs from "./typedefs"
+import resolvers from "./resolvers"
 
 const server = new ApolloServer({ typeDefs, resolvers })
 
