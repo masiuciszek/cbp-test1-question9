@@ -1,12 +1,13 @@
+// parent, args, context, info
 const resolvers = {
   Query: {
     me() {
       return {
         email: "someemail@example.com",
         name: "Mike smith",
-        friends: [],
       }
     },
+    color: () => ({ name: "blue", cool: true }),
   },
 }
 

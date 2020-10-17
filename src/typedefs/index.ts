@@ -4,11 +4,16 @@ const typeDefs = gql`
   type User {
     email: String! #Not null
     name: String!
-    friends: [User]! #array should not be null
+  }
+
+  type Color {
+    name: String!
+    cool: Boolean!
   }
 
   type Query {
     me: User!
+    color: Color!
   }
 `
 
