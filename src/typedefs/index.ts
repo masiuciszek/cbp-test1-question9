@@ -8,8 +8,14 @@ const typeDefs = gql`
     address: String!
   }
 
+  input PostInput {
+    title: String!
+    desc: String!
+    type: String!
+  }
+
   type User {
-    id: ID
+    id: ID!
     firstName: String
     lastName: String
     email: String
@@ -17,20 +23,23 @@ const typeDefs = gql`
     createdAt: String
   }
 
-  type Pet {
+  type Post {
     id: ID!
-    createdAt: String!
-    name: String!
-    cool: Boolean!
+    title: String!
+    desc: String!
     type: String!
+    author: User!
+    createdAt: String!
   }
 
   type Query {
     getUsers: [User]!
+    getPosts: [Post]!
   }
 
   type Mutation {
-    createUser(user: UserInput): [User]
+    createUser(input: UserInput): User
+    createPost(input: PostInput): Post
   }
 `
 
