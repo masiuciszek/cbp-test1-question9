@@ -12,6 +12,7 @@ const typeDefs = gql`
     title: String!
     desc: String!
     type: String!
+    author: String! # user ID
   }
 
   type User {
@@ -34,6 +35,7 @@ const typeDefs = gql`
 
   type Query {
     getUsers: [User]!
+    getUserById(id: String!): User!
     getPosts: [Post]!
   }
 

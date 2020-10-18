@@ -4,7 +4,12 @@ import Post from "../models/Post"
 
 const resolvers = {
   Query: {
-    getUsers: async (parent: any, args: any, { req, res }: Ctx, info: any) => {
+    getUsers: async (
+      parent: never,
+      args: never,
+      { req, res }: Ctx,
+      info: never,
+    ) => {
       try {
         const users = await User.find({})
         return users
@@ -13,14 +18,34 @@ const resolvers = {
         console.error("server error")
       }
     },
+    getPosts: async (
+      parent: never,
+      args: never,
+      { req, res }: Ctx,
+      info: never,
+    ) => {
+      console.log(info)
+      const posts = await Post.find()
+      return posts
+    },
+
+    getUserById: async (
+      parent: never,
+      args: { id: string },
+      { req, res }: Ctx,
+      info: never,
+    ) => {
+      const user = await User.findById(args.id)
+      return user
+    },
   },
 
   Mutation: {
     createUser: async (
-      parent: any,
+      parent: never,
       args: { user: UserInput },
       { req, res }: Ctx,
-      info: any,
+      info: never,
     ) => {
       try {
         const newUser = await new User(args.user)
@@ -36,10 +61,10 @@ const resolvers = {
     },
 
     createPost: async (
-      parent: any,
+      parent: never,
       args: { post: PostInput },
       { req, res }: Ctx,
-      info: any,
+      info: never,
     ) => {
       try {
         const newPost = await new Post(args.post)

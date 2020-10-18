@@ -25,5 +25,5 @@ export interface PostInput {
   title: string
   desc: string
   type: PostType
-  author: User
+  author: string // author ID
 }
