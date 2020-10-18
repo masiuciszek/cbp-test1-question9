@@ -22,6 +22,12 @@ export interface UserInput {
   password: string
   address: string
 }
+export interface UserUpdateInput {
+  firstName?: string
+  lastName?: string
+  email?: string
+  address?: string
+}
 export interface PostInput {
   title: string
   desc: string

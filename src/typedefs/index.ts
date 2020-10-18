@@ -6,6 +6,13 @@ const typeDefs = gql`
     lastName: String!
     email: String!
     password: String!
+    address: String!
+  }
+
+  input UserUpdateInput {
+    firstName: String
+    lastName: String
+    email: String
     address: String
   }
 
@@ -48,6 +55,7 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(input: UserInput): User
+    updateUser(id: String!, input: UserUpdateInput): User!
     createPost(input: PostInput): Post
   }
 `

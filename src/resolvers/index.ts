@@ -1,4 +1,4 @@
-import { Ctx, PostInput, UserInput } from "../types"
+import { Ctx, PostInput, UserInput, UserUpdateInput } from "../types"
 import User from "../models/User"
 import Post from "../models/Post"
 
@@ -37,10 +37,9 @@ const resolvers = {
 
   Mutation: {
     createUser: async (
-      parent: never,
+      _: never,
       args: { input: UserInput },
       { req, res }: Ctx,
-      info: never,
     ) => {
       try {
         const newUser = await new User(args.input)
@@ -54,6 +53,33 @@ const resolvers = {
       } catch (err) {
         console.log(err.message)
       }
+    },
+
+    updateUser: async (
+      _: never,
+      args: { id: string; input: UserUpdateInput },
+    ) => {
+      const user = await User.findById(args.id)
+      // const{id,input:{}}=args
+
+      const data = {
+        firstName: args.input.firstName
+          ? args.input.firstName
+          : user?.firstName,
+        lastName: args.input.lastName ? args.input.lastName : user?.lastName,
+        address: args.input.address ? args.input.address : user?.address,
+        email: args.input.email ? args.input.email : user?.email,
+      }
+
+      console.log(data)
+
+      const newUser = await User.findByIdAndUpdate(args.id, data, {
+        new: true,
+      })
+
+      await newUser?.save()
+
+      return newUser
     },
 
     createPost: async (
