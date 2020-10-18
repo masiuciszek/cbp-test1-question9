@@ -10,13 +10,8 @@ const resolvers = {
       { req, res }: Ctx,
       info: never,
     ) => {
-      try {
-        const users = await User.find({})
-        return users
-      } catch (err) {
-        res.status(500)
-        console.error("server error")
-      }
+      const users = await User.find({})
+      return users
     },
     getPosts: async (
       parent: never,
@@ -43,20 +38,21 @@ const resolvers = {
   Mutation: {
     createUser: async (
       parent: never,
-      args: { user: UserInput },
+      args: { input: UserInput },
       { req, res }: Ctx,
       info: never,
     ) => {
       try {
-        const newUser = await new User(args.user)
+        const newUser = await new User(args.input)
         if (!newUser) {
           throw new Error("something wrong happend")
         }
+
         await newUser.save()
+
         return newUser
       } catch (err) {
-        res.status(500)
-        console.error(err, "server error")
+        console.log(err.message)
       }
     },
 
@@ -66,18 +62,13 @@ const resolvers = {
       { req, res }: Ctx,
       info: never,
     ) => {
-      try {
-        const newPost = await new Post(args.post)
+      const newPost = await new Post(args.post)
 
-        if (!newPost) {
-          throw new Error("something wrong happend")
-        }
-        await newPost.save()
-        return newPost
-      } catch (err) {
-        res.status(500)
-        console.error(err, "server error")
+      if (!newPost) {
+        throw new Error("something wrong happend")
       }
+      await newPost.save()
+      return newPost
     },
   },
 }

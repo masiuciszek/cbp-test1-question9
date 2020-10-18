@@ -5,7 +5,8 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     email: String!
-    address: String!
+    password: String!
+    address: String
   }
 
   input PostInput {
@@ -17,11 +18,12 @@ const typeDefs = gql`
 
   type User {
     id: ID!
-    firstName: String
-    lastName: String
-    email: String
+    firstName: String!
+    lastName: String!
+    email: String!
     address: String
-    createdAt: String
+    password: String!
+    createdAt: String!
   }
 
   type Post {
@@ -31,6 +33,11 @@ const typeDefs = gql`
     type: String!
     author: User!
     createdAt: String!
+  }
+
+  type UserResponse {
+    user: User!
+    token: String!
   }
 
   type Query {
