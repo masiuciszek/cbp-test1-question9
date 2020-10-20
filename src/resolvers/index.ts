@@ -1,4 +1,11 @@
-import { Ctx, PostInput, UserInput, UserUpdateInput } from "../types"
+import {
+  Ctx,
+  ShoeInput,
+  PostInput,
+  Shoe,
+  UserInput,
+  UserUpdateInput,
+} from "../types"
 import User from "../models/User"
 import Post from "../models/Post"
 
@@ -20,6 +27,14 @@ const resolvers = {
     ) => {
       const user = await User.findById(args.id)
       return user
+    },
+    shoes: (_: never, args: { input: ShoeInput }) => {
+      return [
+        { brand: "NIKE", size: 12, sport: "football" },
+        { brand: "JORDAN", size: 13, sport: "basketball" },
+        { brand: "REEBOK", size: 11, season: "winter" },
+        { brand: "ADIDAS", size: 15, season: "summer" },
+      ] as Shoe[]
     },
   },
 
@@ -80,6 +95,13 @@ const resolvers = {
       }
       await newPost.save()
       return newPost
+    },
+  },
+  // for the shoe interface
+  Shoe: {
+    __resolveType(shoe: Shoe) {
+      if (shoe.sport) return "Sneaker Shoe!!!"
+      return "Running shoe"
     },
   },
 }

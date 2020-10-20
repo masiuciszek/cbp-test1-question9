@@ -11,6 +11,19 @@ const typeDefs = gql`
     POLITICS
   }
 
+  enum ShoeType {
+    NEW_BALANCE
+    JORDAN
+    NIKE
+    ADIDAS
+    REEBOK
+  }
+
+  interface Shoe {
+    brand: ShoeType!
+    size: Int!
+  }
+
   input UserInput {
     firstName: String!
     lastName: String!
@@ -24,6 +37,15 @@ const typeDefs = gql`
     lastName: String
     email: String
     address: String
+  }
+
+  input ShoeInput {
+    brand: ShoeType
+    size: Int
+  }
+  input NewShoeInput {
+    brand: ShoeType
+    size: Int
   }
 
   input PostInput {
@@ -52,6 +74,18 @@ const typeDefs = gql`
     createdAt: String!
   }
 
+  type Sneaker implements Shoe {
+    brand: ShoeType!
+    size: Int!
+    sport: String
+  }
+
+  type RunningShoe implements Shoe {
+    brand: ShoeType!
+    size: Int!
+    season: String
+  }
+
   type UserResponse {
     user: User!
     token: String!
@@ -61,12 +95,14 @@ const typeDefs = gql`
     getUsers: [User]!
     getUserById(id: String!): User!
     getPosts: [Post]!
+    shoes(input: ShoeInput): [Shoe]!
   }
 
   type Mutation {
-    createUser(input: UserInput): User
+    createUser(input: UserInput): User!
     updateUser(id: String!, input: UserUpdateInput): User!
-    createPost(input: PostInput): Post
+    createPost(input: PostInput): Post!
+    newShoe(input: NewShoeInput!): Shoe!
   }
 `
 

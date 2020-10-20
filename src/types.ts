@@ -31,6 +31,19 @@ export interface UserUpdateInput {
 export interface PostInput {
   title: string
   desc: string
-  type: string
+  type: PostType
   author: string // author ID
+}
+export interface ShoeInput {
+  brand: ShoeType
+  size: number
+}
+
+type ShoeType = "NEW_BALANCE" | "JORDAN" | "NIKE" | "ADIDAS" | "REEBOK"
+
+export interface Shoe {
+  brand: ShoeType
+  size: number
+  sport?: "football" | "basketball"
+  season?: "summer" | "winter"
 }
