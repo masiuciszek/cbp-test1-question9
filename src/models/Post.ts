@@ -28,8 +28,8 @@ const postSchema = new Schema<Post>(
     },
     type: {
       type: String,
-      enum: ["love", "news", "drama", "tech", "history", "sport", "politics"],
-      default: "love",
+      enum: ["LOVE", "NEWS", "DRAMA", "TECH", "HISTORY", "SPORT", "POLITICS"],
+      default: "LOVE",
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,

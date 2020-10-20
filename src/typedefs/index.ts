@@ -1,6 +1,16 @@
 import gql from "graphql-tag"
 
 const typeDefs = gql`
+  enum PostType {
+    LOVE
+    NEWS
+    DRAMA
+    TECH
+    HISTORY
+    SPORT
+    POLITICS
+  }
+
   input UserInput {
     firstName: String!
     lastName: String!
@@ -19,7 +29,7 @@ const typeDefs = gql`
   input PostInput {
     title: String!
     desc: String!
-    type: String!
+    type: PostType!
     author: String! # user ID
   }
 
@@ -37,7 +47,7 @@ const typeDefs = gql`
     id: ID!
     title: String!
     desc: String!
-    type: String!
+    type: PostType!
     author: User!
     createdAt: String!
   }

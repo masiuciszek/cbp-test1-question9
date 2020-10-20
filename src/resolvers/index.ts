@@ -4,23 +4,12 @@ import Post from "../models/Post"
 
 const resolvers = {
   Query: {
-    getUsers: async (
-      parent: never,
-      args: never,
-      { req, res }: Ctx,
-      info: never,
-    ) => {
+    getUsers: async () => {
       const users = await User.find({})
       return users
     },
-    getPosts: async (
-      parent: never,
-      args: never,
-      { req, res }: Ctx,
-      info: never,
-    ) => {
-      console.log(info)
-      const posts = await Post.find()
+    getPosts: async () => {
+      const posts = await Post.find().populate("author")
       return posts
     },
 
@@ -28,7 +17,6 @@ const resolvers = {
       parent: never,
       args: { id: string },
       { req, res }: Ctx,
-      info: never,
     ) => {
       const user = await User.findById(args.id)
       return user
@@ -60,7 +48,6 @@ const resolvers = {
       args: { id: string; input: UserUpdateInput },
     ) => {
       const user = await User.findById(args.id)
-      // const{id,input:{}}=args
 
       const data = {
         firstName: args.input.firstName
@@ -70,8 +57,6 @@ const resolvers = {
         address: args.input.address ? args.input.address : user?.address,
         email: args.input.email ? args.input.email : user?.email,
       }
-
-      console.log(data)
 
       const newUser = await User.findByIdAndUpdate(args.id, data, {
         new: true,
@@ -83,12 +68,12 @@ const resolvers = {
     },
 
     createPost: async (
-      parent: never,
-      args: { post: PostInput },
+      _: never,
+      args: { input: PostInput },
       { req, res }: Ctx,
-      info: never,
     ) => {
-      const newPost = await new Post(args.post)
+      console.log(args.input)
+      const newPost = await new Post(args.input)
 
       if (!newPost) {
         throw new Error("something wrong happend")

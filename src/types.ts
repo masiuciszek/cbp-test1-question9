@@ -1,19 +1,19 @@
 import { Request, Response } from "express"
-import { User } from "./models/User"
 
 export interface Ctx {
   req: Request
   res: Response
 }
 
-type PostType =
-  | "love"
-  | "news"
-  | "drama"
-  | "tech"
-  | "history"
-  | "sport"
-  | "politics"
+enum PostType {
+  LOVE = "LOVE",
+  NEWS = "NEWS",
+  DRAMA = "DRAMA",
+  TECH = "TECH",
+  HISTORY = "HISTORY",
+  SPORT = "SPORT",
+  POLITICS = "POLITICS",
+}
 
 export interface UserInput {
   firstName: string
@@ -31,6 +31,6 @@ export interface UserUpdateInput {
 export interface PostInput {
   title: string
   desc: string
-  type: PostType
+  type: string
   author: string // author ID
 }
