@@ -1,6 +1,8 @@
 import gql from "graphql-tag"
 
 const typeDefs = gql`
+  union SportSociety = FootballTeam | BasketballTeam
+
   enum PostType {
     LOVE
     NEWS

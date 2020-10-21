@@ -30,12 +30,23 @@ const resolvers = {
       return user
     },
     shoes: (_: never, args: { input: ShoeInput }) => {
-      return [
-        { brand: "NIKE", size: 12, sport: "football" },
-        { brand: "JORDAN", size: 13, sport: "basketball" },
-        { brand: "REEBOK", size: 11, season: "winter" },
-        { brand: "ADIDAS", size: 15, season: "summer" },
-      ] as Shoe[]
+      if (args.input.brand) {
+        return [
+          { brand: "NIKE", size: 12, sport: "football" },
+          { brand: "JORDAN", size: 13, sport: "basketball" },
+          { brand: "REEBOK", size: 11, season: "winter" },
+          { brand: "ADIDAS", size: 15, season: "summer" },
+        ].filter(
+          shoe => shoe.brand.toLowerCase() === args.input.brand.toLowerCase(),
+        ) as Shoe[]
+      } else {
+        return [
+          { brand: "NIKE", size: 12, sport: "football" },
+          { brand: "JORDAN", size: 13, sport: "basketball" },
+          { brand: "REEBOK", size: 11, season: "winter" },
+          { brand: "ADIDAS", size: 15, season: "summer" },
+        ] as Shoe[]
+      }
     },
 
     teams: () => {
