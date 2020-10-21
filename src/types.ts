@@ -47,3 +47,10 @@ export interface Shoe {
   sport?: "football" | "basketball"
   season?: "summer" | "winter"
 }
+
+export interface Team {
+  name: "LEGIA" | "IFK" | "MANU" | "LAKERS"
+  year: number
+  color?: string
+  hasUltras?: boolean
+}

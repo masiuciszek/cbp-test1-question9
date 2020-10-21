@@ -19,9 +19,21 @@ const typeDefs = gql`
     REEBOK
   }
 
+  enum TeamType {
+    LEGIA
+    IFK
+    MANU
+    LAKERS
+  }
+
   interface Shoe {
     brand: ShoeType!
     size: Int!
+  }
+
+  interface Team {
+    name: TeamType!
+    year: Int!
   }
 
   input UserInput {
@@ -91,11 +103,23 @@ const typeDefs = gql`
     token: String!
   }
 
+  type FootballTeam implements Team {
+    name: TeamType!
+    year: Int!
+    hasUltras: Boolean
+  }
+  type BasketballTeam implements Team {
+    name: TeamType!
+    year: Int!
+    color: String
+  }
+
   type Query {
     getUsers: [User]!
     getUserById(id: String!): User!
     getPosts: [Post]!
     shoes(input: ShoeInput): [Shoe]!
+    teams: [Team]
   }
 
   type Mutation {

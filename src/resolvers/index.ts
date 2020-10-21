@@ -5,6 +5,7 @@ import {
   Shoe,
   UserInput,
   UserUpdateInput,
+  Team,
 } from "../types"
 import User from "../models/User"
 import Post from "../models/Post"
@@ -35,6 +36,14 @@ const resolvers = {
         { brand: "REEBOK", size: 11, season: "winter" },
         { brand: "ADIDAS", size: 15, season: "summer" },
       ] as Shoe[]
+    },
+
+    teams: () => {
+      return [
+        { name: "LEGIA", year: 1916 },
+        { name: "LAKERS", year: 1947 },
+        { name: "MANU", year: 1902 },
+      ] as Team[]
     },
   },
 
@@ -100,8 +109,14 @@ const resolvers = {
   // for the shoe interface
   Shoe: {
     __resolveType(shoe: Shoe) {
-      if (shoe.sport) return "Sneaker Shoe!!!"
-      return "Running shoe"
+      if (shoe.sport) return "Sneaker" // same name  as the type itself
+      return "RunningShoe" // same name  as the type itself
+    },
+  },
+  // Team interface
+  Team: {
+    __resolveType(team: Team) {
+      return team.hasUltras ? "FootballTeam" : "BasketballTeam"
     },
   },
 }
