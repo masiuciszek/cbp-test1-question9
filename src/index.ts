@@ -1,4 +1,6 @@
-import { ApolloServer } from "apollo-server"
+import express from "express"
+import { ApolloServer } from "apollo-server-express"
+import cookieParser from "cookie-parser"
 import typeDefs from "./typedefs"
 import resolvers from "./resolvers"
 import connectDb from "./db/connectDb"
@@ -9,10 +11,21 @@ import connectDb from "./db/connectDb"
     resolvers,
     tracing: true,
     playground: true,
-    context: ({ req, res }) => ({ req, res }),
+    context: ({ req, res }) => {
+      const token = req.headers.authorization || ""
+
+      return { req, res, token }
+    },
   })
 
-  server
-    .listen(4000)
-    .then(({ url }) => console.log(`server is on port ${url} 🚀`))
+  const app = express()
+  server.applyMiddleware({ app })
+
+  app.use(cookieParser())
+
+  app.listen({ port: 4000 }, () =>
+    console.log(
+      `🚀 Server ready at http://localhost:4000${server.graphqlPath}`,
+    ),
+  )
 })()
