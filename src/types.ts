@@ -1,8 +1,13 @@
 import { Request, Response } from "express"
+import { User } from "./models/User"
 
 export interface Ctx {
   req: Request
   res: Response
+}
+
+export interface AuthRequest extends Request {
+  user: User
 }
 
 enum PostType {

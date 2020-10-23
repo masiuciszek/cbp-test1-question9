@@ -6,6 +6,7 @@ const tokenResponse = async (
   statusCode: number,
   success: boolean,
   res: Response,
+  expire: number = 60 * 60,
 ) => {
   const token = await user.generateAuthToken()
 

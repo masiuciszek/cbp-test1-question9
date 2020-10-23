@@ -27,13 +27,14 @@ export const Mutations = {
         throw new Error("something wrong happend")
       }
 
-      await newUser.save()
+      // await newUser.save()
 
       await tokenResponse(newUser, 201, true, res)
 
       return newUser
     } catch (err) {
       console.log(err.message)
+      res.status(500).send("SERVER ERROR")
     }
   },
 
@@ -89,7 +90,6 @@ export const Mutations = {
       )
 
       let date = new Date()
-
       const optionsRefreshToken = {
         expire: date.setHours(date.getDay() + 7),
         httpOnly: false,
@@ -101,8 +101,19 @@ export const Mutations = {
         secure: false,
       }
 
-      res.cookie("refresh-token", refreshToken, optionsRefreshToken)
-      res.cookie("access-token", accessToken, optionsAccessToken)
+      // Send cookie to the server
+      res.cookie("refreshToken", refreshToken, optionsRefreshToken)
+      res.cookie("accessToken", accessToken, optionsAccessToken)
+
+      // await tokenResponse(
+      //   user,
+      //   200,
+      //   true,
+      //   res,
+      //   date.setHours(date.getDay() + 7),
+      // )
+
+      return user
     } catch (err) {
       console.log(err)
     }

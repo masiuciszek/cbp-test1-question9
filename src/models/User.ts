@@ -1,6 +1,8 @@
+import * as dotenv from "dotenv"
 import mongoose, { Model, Schema, Document, HookNextFunction } from "mongoose"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
+dotenv.config()
 
 export interface User extends Document {
   firstName: string
@@ -10,7 +12,7 @@ export interface User extends Document {
   count: number
   address: string
   createdAt: Date
-  generateAuthToken: () => Promise<string>
+  generateAuthToken: (expiresIn?: string) => Promise<string>
 }
 
 interface IUser extends Model<User> {
@@ -64,9 +66,13 @@ userSchema.pre<User>("save", async function (next: HookNextFunction) {
   next()
 })
 
-userSchema.methods.generateAuthToken = async function (): Promise<string> {
+userSchema.methods.generateAuthToken = async function (
+  expiresIn: string = "20min",
+): Promise<string> {
   const user = this
-  const token = jwt.sign({ id: user._id }, "secret", { expiresIn: "24h" })
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET!, {
+    expiresIn,
+  })
   await user.save()
   return token
 }
