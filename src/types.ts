@@ -1,13 +1,13 @@
 import { Request, Response } from "express"
 import { User } from "./models/User"
 
-export interface Ctx {
-  req: Request
-  res: Response
-}
-
 export interface AuthRequest extends Request {
   user: User
+}
+
+export interface Ctx {
+  req: AuthRequest
+  res: Response
 }
 
 enum PostType {
@@ -36,9 +36,10 @@ export interface LoginInput {
 export type Input<T> = {
   [key: string]: T
 }
-// export type Input<T> = {
-//   [key in keyof T]: T[key]
-// }
+
+export type InputKey<T> = {
+  [key in keyof T]: T[key]
+}
 
 export interface UserUpdateInput {
   firstName?: string

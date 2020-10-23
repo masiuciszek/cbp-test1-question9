@@ -4,9 +4,9 @@ import cookieParser from "cookie-parser"
 import typeDefs from "./typedefs"
 import resolvers from "./resolvers"
 import connectDb from "./db/connectDb"
-import jwt from "jsonwebtoken"
+// import jwt from "jsonwebtoken"
+// import User from "./models/User"
 import { AuthRequest } from "./types"
-import User from "./models/User"
 import "dotenv/config"
 ;(async () => {
   const server = new ApolloServer({
@@ -31,19 +31,19 @@ import "dotenv/config"
     // console.log(req.cookies)
     // const { refreshToken, accessToken } = req.cookies
     // if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
-
     // }
-    const { accessToken } = req.cookies
-    const decoded = jwt.verify(accessToken, process.env.JWT_SECRET!) as any
-
-    const user = await User.findById(decoded.userId)
-
-    if (!user) {
-      throw new Error(`Auth error`)
-    }
-
-    req.user = decoded.userId
-    next()
+    // let token
+    // if (req.cookies) {
+    //   const { accessToken } = req.cookies
+    //   token = accessToken
+    // }
+    // const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any
+    // const user = await User.findById(decoded.userId)
+    // if (!user) {
+    //   throw new Error(`Auth error`)
+    // }
+    // req.user = decoded.userId
+    // next()
   })
 
   server.applyMiddleware({ app })

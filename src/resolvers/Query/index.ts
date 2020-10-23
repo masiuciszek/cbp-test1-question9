@@ -8,6 +8,17 @@ export const Query = {
     return users
   },
 
+  me: async (_: never, __: never, { req, res }: Ctx) => {
+    try {
+      const user = await User.findById(req.user)
+      if (!user) throw new Error(`Auth error`)
+
+      return user
+    } catch (err) {
+      console.log(err.message)
+    }
+  },
+
   getMe: async (_: never, args: { id: string }) => {
     try {
       const user = await User.findById(args.id)

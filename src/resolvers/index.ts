@@ -18,6 +18,16 @@ const resolvers = {
       return team.hasUltras ? "FootballTeam" : "BasketballTeam"
     },
   },
+  SportSociety: {
+    __resolveType(shoeOrTeam: Team | Shoe) {
+      if ("sport" in shoeOrTeam) {
+        return "Sneaker"
+      }
+      if ("hasUltras" in shoeOrTeam) {
+        return "FootballTeam"
+      }
+    },
+  },
 }
 
 export default resolvers
