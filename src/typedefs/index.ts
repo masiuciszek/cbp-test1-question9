@@ -53,10 +53,16 @@ const typeDefs = gql`
     address: String
   }
 
+  input LoginInput {
+    email: String!
+    password: String!
+  }
+
   input ShoeInput {
     brand: ShoeType
     size: Int
   }
+
   input NewShoeInput {
     brand: ShoeType
     size: Int
@@ -128,6 +134,7 @@ const typeDefs = gql`
   type Mutation {
     createUser(input: UserInput): User!
     updateUser(id: String!, input: UserUpdateInput): User!
+    login(input: LoginInput!): User!
     createPost(input: PostInput): Post!
     newShoe(input: NewShoeInput!): Shoe!
   }

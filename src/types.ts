@@ -3,7 +3,6 @@ import { Request, Response } from "express"
 export interface Ctx {
   req: Request
   res: Response
-  token?: string
 }
 
 enum PostType {
@@ -23,6 +22,19 @@ export interface UserInput {
   password: string
   address: string
 }
+
+export interface LoginInput {
+  email: string
+  password: string
+}
+
+export type Input<T> = {
+  [key: string]: T
+}
+// export type Input<T> = {
+//   [key in keyof T]: T[key]
+// }
+
 export interface UserUpdateInput {
   firstName?: string
   lastName?: string

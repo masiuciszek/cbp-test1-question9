@@ -5,23 +5,23 @@ import typeDefs from "./typedefs"
 import resolvers from "./resolvers"
 import connectDb from "./db/connectDb"
 ;(async () => {
-  await connectDb()
   const server = new ApolloServer({
     typeDefs,
     resolvers,
     tracing: true,
     playground: true,
     context: ({ req, res }) => {
-      const token = req.headers.authorization || ""
-
-      return { req, res, token }
+      return { req, res }
     },
   })
 
+  await connectDb()
+
   const app = express()
-  server.applyMiddleware({ app })
 
   app.use(cookieParser())
+
+  server.applyMiddleware({ app })
 
   app.listen({ port: 4000 }, () =>
     console.log(

@@ -7,6 +7,7 @@ export interface User extends Document {
   lastName: string
   email: string
   password: string
+  count: number
   address: string
   createdAt: Date
   generateAuthToken: () => Promise<string>
@@ -35,6 +36,10 @@ const userSchema = new Schema<User>(
       type: String,
       minlength: 3,
       required: true,
+    },
+    count: {
+      type: Number,
+      default: 0,
     },
     address: {
       type: String,

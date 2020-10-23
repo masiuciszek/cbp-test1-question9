@@ -1,7 +1,19 @@
+import * as dotenv from "dotenv"
 import Post from "../../models/Post"
 import User from "../../models/User"
-import { Ctx, PostInput, UserInput, UserUpdateInput } from "../../types"
+import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
+import {
+  Ctx,
+  Input,
+  LoginInput,
+  PostInput,
+  UserInput,
+  UserUpdateInput,
+} from "../../types"
 import tokenResponse from "../../utils/tokenResponse"
+
+dotenv.config()
 
 export const Mutations = {
   createUser: async (
@@ -45,6 +57,55 @@ export const Mutations = {
     await newUser?.save()
 
     return newUser
+  },
+
+  login: async (_: never, { input }: Input<LoginInput>, { req, res }: Ctx) => {
+    try {
+      const { email, password } = input
+      const user = await User.findOne({ email })
+      if (!user) {
+        throw new Error(`No user founded`)
+      }
+
+      const isValid = await bcrypt.compare(password, user.password)
+      if (!isValid) {
+        throw new Error(`Auth error!!!`)
+      }
+
+      const accessToken = jwt.sign(
+        { userId: user.id },
+        process.env.JWT_SECRET!,
+        {
+          expiresIn: "20min",
+        },
+      )
+
+      const refreshToken = jwt.sign(
+        { userId: user.id, count: user.count },
+        process.env.JWT_SECRET!,
+        {
+          expiresIn: "7days",
+        },
+      )
+
+      let date = new Date()
+
+      const optionsRefreshToken = {
+        expire: date.setHours(date.getDay() + 7),
+        httpOnly: false,
+        secure: false,
+      }
+      const optionsAccessToken = {
+        expire: date.setHours(date.getMinutes() * 20),
+        httpOnly: false,
+        secure: false,
+      }
+
+      res.cookie("refresh-token", refreshToken, optionsRefreshToken)
+      res.cookie("access-token", accessToken, optionsAccessToken)
+    } catch (err) {
+      console.log(err)
+    }
   },
 
   createPost: async (
