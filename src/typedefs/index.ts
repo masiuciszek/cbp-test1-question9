@@ -124,8 +124,8 @@ const typeDefs = gql`
 
   type Query {
     getUsers: [User]!
-    getMe(id: String!): User!
-    me: User!
+    getMe(id: String!): User
+    me: User
     getUserById(id: String!): User!
     getPosts: [Post]!
     shoes(input: ShoeInput): [Shoe]!

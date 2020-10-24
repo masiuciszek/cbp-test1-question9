@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import { User } from "./models/User"
 
 export interface AuthRequest extends Request {
-  user: User
+  userId: User["id"]
 }
 
 export interface Ctx {

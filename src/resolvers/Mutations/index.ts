@@ -2,7 +2,7 @@ import * as dotenv from "dotenv"
 import Post from "../../models/Post"
 import User from "../../models/User"
 import bcrypt from "bcryptjs"
-import jwt from "jsonwebtoken"
+// import jwt from "jsonwebtoken"
 import {
   Ctx,
   Input,
@@ -12,6 +12,7 @@ import {
   UserUpdateInput,
 } from "../../types"
 import tokenResponse from "../../utils/tokenResponse"
+import { createTokens } from "../../utils/createTokens"
 
 dotenv.config()
 
@@ -73,37 +74,11 @@ export const Mutations = {
         throw new Error(`Auth error!!!`)
       }
 
-      const accessToken = jwt.sign(
-        { userId: user.id },
-        process.env.JWT_SECRET!,
-        {
-          expiresIn: "20min",
-        },
-      )
-
-      const refreshToken = jwt.sign(
-        { userId: user.id, count: user.count },
-        process.env.JWT_SECRET!,
-        {
-          expiresIn: "7days",
-        },
-      )
-
-      let date = new Date()
-      const optionsRefreshToken = {
-        expire: date.setHours(date.getDay() + 7),
-        httpOnly: false,
-        secure: false,
-      }
-      const optionsAccessToken = {
-        expire: date.setHours(date.getMinutes() * 20),
-        httpOnly: false,
-        secure: false,
-      }
+      const tokens = createTokens(user)
 
       // Send cookie to the server
-      res.cookie("refreshToken", refreshToken, optionsRefreshToken)
-      res.cookie("accessToken", accessToken, optionsAccessToken)
+      res.cookie("refreshToken", tokens.refreshToken)
+      res.cookie("accessToken", tokens.accessToken)
 
       // await tokenResponse(
       //   user,

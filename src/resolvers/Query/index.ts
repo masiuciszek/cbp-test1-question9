@@ -10,8 +10,9 @@ export const Query = {
 
   me: async (_: never, __: never, { req, res }: Ctx) => {
     try {
-      const user = await User.findById(req.user)
-      if (!user) throw new Error(`Auth error`)
+      console.log(req.userId)
+      const user = await User.findById(req.userId)
+      if (!user) return null
 
       return user
     } catch (err) {
