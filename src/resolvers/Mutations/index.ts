@@ -11,7 +11,7 @@ import {
   UserInput,
   UserUpdateInput,
 } from "../../types"
-import tokenResponse from "../../utils/tokenResponse"
+
 import { createTokens } from "../../utils/createTokens"
 
 dotenv.config()
@@ -28,9 +28,10 @@ export const Mutations = {
         throw new Error("something wrong happend")
       }
 
-      // await newUser.save()
+      const tokens = createTokens(newUser)
 
-      await tokenResponse(newUser, 201, true, res)
+      res.cookie("refreshToken", tokens.refreshToken)
+      res.cookie("accessToken", tokens.accessToken)
 
       return newUser
     } catch (err) {
@@ -64,9 +65,15 @@ export const Mutations = {
   login: async (_: never, { input }: Input<LoginInput>, { req, res }: Ctx) => {
     try {
       const { email, password } = input
+
+      if (!email && !password) {
+        throw new Error("Email and passord is required!")
+      }
+
       const user = await User.findOne({ email })
+
       if (!user) {
-        throw new Error(`No user founded`)
+        throw new Error(`No user with email ${email}`)
       }
 
       const isValid = await bcrypt.compare(password, user.password)
@@ -76,17 +83,8 @@ export const Mutations = {
 
       const tokens = createTokens(user)
 
-      // Send cookie to the server
       res.cookie("refreshToken", tokens.refreshToken)
       res.cookie("accessToken", tokens.accessToken)
-
-      // await tokenResponse(
-      //   user,
-      //   200,
-      //   true,
-      //   res,
-      //   date.setHours(date.getDay() + 7),
-      // )
 
       return user
     } catch (err) {
@@ -94,13 +92,30 @@ export const Mutations = {
     }
   },
 
+  invalidateTokens: async (_: never, __: never, { req, res }: Ctx) => {
+    if (!req.userId) {
+      return false
+    }
+
+    const user = await User.findOne(req.userId)
+    if (!user) {
+      return false
+    }
+    user.count += 1
+    await user.save()
+
+    return true
+  },
+
   createPost: async (
     _: never,
     args: { input: PostInput },
     { req, res }: Ctx,
   ) => {
-    console.log(args.input)
-    const newPost = await new Post(args.input)
+    const newPost = await new Post({
+      ...args.input,
+      author: req.userId,
+    })
 
     if (!newPost) {
       throw new Error("something wrong happend")

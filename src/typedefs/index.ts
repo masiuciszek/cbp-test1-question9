@@ -72,7 +72,6 @@ const typeDefs = gql`
     title: String!
     desc: String!
     type: PostType!
-    author: String! # user ID
   }
 
   type User {
@@ -83,6 +82,7 @@ const typeDefs = gql`
     address: String
     password: String!
     createdAt: String!
+    posts: [Post]
   }
 
   type Post {
@@ -90,7 +90,7 @@ const typeDefs = gql`
     title: String!
     desc: String!
     type: PostType!
-    author: User!
+    author: User
     createdAt: String!
   }
 
@@ -135,8 +135,9 @@ const typeDefs = gql`
   type Mutation {
     createUser(input: UserInput): User!
     updateUser(id: String!, input: UserUpdateInput): User!
-    login(input: LoginInput!): User!
-    createPost(input: PostInput): Post!
+    login(input: LoginInput!): User
+    invalidateTokens: Boolean!
+    createPost(input: PostInput): Post
     newShoe(input: NewShoeInput!): Shoe!
   }
 `

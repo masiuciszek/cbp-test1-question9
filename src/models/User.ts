@@ -66,6 +66,22 @@ userSchema.pre<User>("save", async function (next: HookNextFunction) {
   next()
 })
 
+userSchema.virtual("posts", {
+  ref: "Post",
+  localField: "_id", // which field on the User
+  foreignField: "author", // which field on the Post
+})
+
+userSchema.pre("find", function (next: HookNextFunction) {
+  this.populate("reviews")
+  next()
+})
+
+userSchema.pre("findOne", function (next: HookNextFunction) {
+  this.populate("reviews")
+  next()
+})
+
 userSchema.methods.generateAuthToken = async function (
   expiresIn: string = "20min",
 ): Promise<string> {
