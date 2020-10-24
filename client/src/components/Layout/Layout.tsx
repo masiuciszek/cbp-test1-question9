@@ -37,7 +37,7 @@ const theme: Theme = {
     h5: "1.25em",
     p: "1.15em",
     a: "1em",
-    maxWidth: "1200px",
+    maxWidth: "900px",
     maxWidthPage: "970px",
   },
   transition: {

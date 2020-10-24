@@ -13,12 +13,14 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.6",
     "apollo-link-http": "^1.5.17",
     "emotion": "^10.0.27",
     "emotion-theming": "^10.0.27",
     "graphql": "^15.3.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
     "typescript": "~3.7.2"
   },
@@ -47,5 +49,4 @@
     "babel-plugin-emotion": "^10.0.33"
   },
   "proxy": "http://localhost:4000/graphql"
-
 }

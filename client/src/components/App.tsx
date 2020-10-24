@@ -1,14 +1,11 @@
 import React from "react"
+import Routes from "../Routes"
 import { Layout } from "./Layout"
-import { Page } from "./Styled"
-import { Users } from "./users"
 
 function App() {
   return (
     <Layout>
-      <Page>
-        <Users />
-      </Page>
+      <Routes />
     </Layout>
   )
 }

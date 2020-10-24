@@ -1,14 +1,53 @@
 import React from "react"
+import { styled } from "../Layout"
 
 interface UserProps {
   user: User
 }
 
-const User: React.FC<UserProps> = ({ user }) => {
+const randomNum = () => Math.floor(Math.random() * 120)
+
+const StyledUser = styled("div")`
+  padding: 1rem;
+  margin: 1rem 0;
+  p {
+    font-size: 3em;
+    span {
+      margin-left: 0.5em;
+      background: ${({ theme }) => theme.colors.highlight};
+      padding: 0.5em;
+      border-radius: 4px;
+      box-shadow: ${({ theme }) => theme.shadows.elevations[3]};
+      border: 2px solid ${({ theme }) => theme.colors.positive};
+      color: ${({ theme }) => theme.colors.main};
+      transform: rotate(2deg);
+
+      display: inline-block;
+    }
+  }
+`
+
+const User: React.FC<UserProps> = ({
+  user: { firstName, lastName, email, address },
+}) => {
   return (
-    <div>
-      <p>{user.firstName}</p>
-    </div>
+    <StyledUser>
+      <p>
+        Name
+        <span>
+          {firstName} {lastName}
+        </span>
+      </p>
+      <p>
+        Email
+        <span>{email}</span>
+      </p>
+
+      <p>
+        Address
+        <span> {address} </span>
+      </p>
+    </StyledUser>
   )
 }
 export default User
