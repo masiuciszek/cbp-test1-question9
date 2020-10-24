@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Model } from "mongoose"
+import mongoose, { Schema, Document, Model, HookNextFunction } from "mongoose"
 import { User } from "./User"
 
 export interface Post extends Document {
@@ -46,6 +46,15 @@ const postSchema = new Schema<Post>(
     toObject: { virtuals: true },
   },
 )
+
+postSchema.pre<Post>("find", function (next: HookNextFunction) {
+  this.populate("author")
+  next()
+})
+postSchema.pre<Post>("findOne", function (next: HookNextFunction) {
+  this.populate("author")
+  next()
+})
 
 const Post = mongoose.model<Post, IPost>("Post", postSchema)
 

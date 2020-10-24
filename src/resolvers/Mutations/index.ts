@@ -24,9 +24,8 @@ export const Mutations = {
   ) => {
     try {
       const newUser = await new User(args.input)
-      if (!newUser) {
-        throw new Error("something wrong happend")
-      }
+
+      await newUser.save()
 
       const tokens = createTokens(newUser)
 

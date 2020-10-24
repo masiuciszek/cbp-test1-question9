@@ -10,27 +10,12 @@ export const Query = {
 
   me: async (_: never, __: never, { req, res }: Ctx) => {
     try {
-      console.log(req.userId)
       const user = await User.findById(req.userId)
       if (!user) return null
 
       return user
     } catch (err) {
       console.log(err.message)
-    }
-  },
-
-  getMe: async (_: never, args: { id: string }) => {
-    try {
-      const user = await User.findById(args.id)
-
-      if (!user) {
-        throw new Error(`no user found with ${args.id}`)
-      }
-
-      return user
-    } catch (err) {
-      console.error(err.message)
     }
   },
 
