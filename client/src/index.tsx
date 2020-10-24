@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import App from "./components/App"
 import * as serviceWorker from "./serviceWorker"
 import { ApolloProvider } from "@apollo/client"
-import client from "./apollo/client"
+import { client } from "./ClientGql"
 
 ReactDOM.render(
   <React.StrictMode>
