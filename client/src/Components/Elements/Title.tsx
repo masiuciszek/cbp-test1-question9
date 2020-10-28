@@ -17,7 +17,6 @@ const StyledTitle = styled("section")<StyledTitleProps>`
 `
 
 const Title: React.FC<TitleProps> = ({ title, subTitle, extraStyles }) => {
-  console.log(extraStyles)
   return (
     <StyledTitle extraStyles={extraStyles}>
       <h1>{title}</h1>
