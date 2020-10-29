@@ -83,10 +83,15 @@ export const Button = styled("button")`
   color: ${({ theme }) => theme.colors.main};
   transition: ${({ theme }) => theme.transition.quickTransition};
   cursor: pointer;
+
   &:hover {
     box-shadow: ${({ theme }) => theme.shadows.elevations[4]};
     width: 66%;
     background: transparent;
     color: ${({ theme }) => theme.colors.positive};
+  }
+  &:active {
+    position: relative;
+    top: 12px;
   }
 `

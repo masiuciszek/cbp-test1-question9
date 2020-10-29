@@ -1,22 +1,21 @@
 import React from "react"
-import LoginForm from "../Components/Elements/LoginForm"
+import RegisterForm from "../Components/Elements/RegisterForm"
 import Title from "../Components/Elements/Title"
 import { Page, Wrapper } from "../Components/Styled"
-
-interface LoginPageProps {}
 
 const extraStyles = {
   "text-align": "center",
   "border-bottom": "2px solid #333",
 }
-const LoginPage: React.FC<LoginPageProps> = () => {
+
+const RegisterPage = () => {
   return (
     <Page>
       <Wrapper>
-        <Title title="Login" extraStyles={extraStyles} />
-        <LoginForm className="Login-form" />
+        <Title title="Register" extraStyles={extraStyles} />
+        <RegisterForm className="Register-form" />
       </Wrapper>
     </Page>
   )
 }
-export default LoginPage
+export default RegisterPage

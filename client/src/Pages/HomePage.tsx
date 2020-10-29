@@ -3,13 +3,11 @@ import Title from "../Components/Elements/Title"
 import { Page, Wrapper } from "../Components/Styled"
 import { Users } from "../Components/users"
 
-interface HomePageProps {}
-
 const extraStyles = {
   "text-align": "center",
 }
 
-const HomePage: React.FC<HomePageProps> = ({}) => {
+const HomePage = () => {
   return (
     <Page>
       <Wrapper>

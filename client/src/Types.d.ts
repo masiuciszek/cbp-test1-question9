@@ -28,3 +28,11 @@ interface User {
 }
 
 interface GetUserQuery {}
+
+interface UserMutationData {
+  lastName: string
+  firstName: string
+  email: string
+  id: string
+  address: string
+}
