@@ -15,5 +15,11 @@ export const createTokens = (user: User) => {
     { expiresIn: "20min" },
   )
 
-  return { refreshToken, accessToken }
+  const authToken = jwt.sign(
+    { userId: user.id },
+    process.env.JWT_SECRET_ACCESS!,
+    { expiresIn: "20min" },
+  )
+
+  return { refreshToken, accessToken, authToken }
 }

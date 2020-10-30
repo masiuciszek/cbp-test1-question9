@@ -4,10 +4,7 @@ import cookieParser from "cookie-parser"
 import typeDefs from "./typedefs"
 import resolvers from "./resolvers"
 import connectDb from "./db/connectDb"
-// import jwt from "jsonwebtoken"
-// import User from "./models/User"
-// import { AuthRequest } from "./types"
-// import { createTokens } from "./utils/createTokens"
+import cors from "cors"
 import "dotenv/config"
 import handleAuth from "./middleware/handleAuth"
 ;(async () => {
@@ -24,6 +21,12 @@ import handleAuth from "./middleware/handleAuth"
   await connectDb()
 
   const app = express()
+  const corsOptions = {
+    origin: "http://localhost:3000", // client path
+    credentials: true,
+  }
+
+  app.use(cors(corsOptions))
 
   app.use(cookieParser())
   app.use(handleAuth)

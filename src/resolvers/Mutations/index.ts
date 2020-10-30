@@ -2,7 +2,7 @@ import * as dotenv from "dotenv"
 import Post from "../../models/Post"
 import User from "../../models/User"
 import bcrypt from "bcryptjs"
-// import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 import {
   Ctx,
   Input,
@@ -29,8 +29,9 @@ export const Mutations = {
 
       const tokens = createTokens(newUser)
 
-      res.cookie("refreshToken", tokens.refreshToken)
-      res.cookie("accessToken", tokens.accessToken)
+      // res.cookie("refreshToken", tokens.refreshToken)
+      // res.cookie("accessToken", tokens.accessToken)
+      res.cookie("authToken", tokens.accessToken)
 
       return newUser
     } catch (err) {
@@ -82,8 +83,7 @@ export const Mutations = {
 
       const tokens = createTokens(user)
 
-      res.cookie("refreshToken", tokens.refreshToken)
-      res.cookie("accessToken", tokens.accessToken)
+      res.cookie("authToken", tokens.accessToken)
 
       return user
     } catch (err) {
