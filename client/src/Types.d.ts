@@ -28,6 +28,12 @@ interface User {
 }
 
 interface GetUserQuery {}
+interface GetMeQuery {
+  firstName: string
+  lastName: string
+  email: string
+  posts?: Post[]
+}
 
 interface UserMutationData {
   lastName: string

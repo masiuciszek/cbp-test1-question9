@@ -29,9 +29,7 @@ export const Mutations = {
 
       const tokens = createTokens(newUser)
 
-      // res.cookie("refreshToken", tokens.refreshToken)
-      // res.cookie("accessToken", tokens.accessToken)
-      res.cookie("authToken", tokens.accessToken)
+      res.cookie("authToken", tokens.authToken)
 
       return newUser
     } catch (err) {
@@ -83,7 +81,7 @@ export const Mutations = {
 
       const tokens = createTokens(user)
 
-      res.cookie("authToken", tokens.accessToken)
+      res.cookie("authToken", tokens.authToken)
 
       return user
     } catch (err) {

@@ -1,4 +1,7 @@
+import { useQuery } from "@apollo/client"
+import Cookies from "js-cookie"
 import React from "react"
+import { ME_QUERY } from "../ClientGql/queries"
 import Title from "../Components/Elements/Title"
 import { Page, Wrapper } from "../Components/Styled"
 import { Users } from "../Components/users"
@@ -8,6 +11,9 @@ const extraStyles = {
 }
 
 const HomePage = () => {
+  // const { loading, error, data } = useQuery<GetMeQuery>(ME_QUERY)
+  // if (loading) return <p>...loading</p>
+
   return (
     <Page>
       <Wrapper>

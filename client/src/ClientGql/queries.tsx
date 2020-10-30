@@ -11,3 +11,17 @@ export const USERS_QUERY = gql`
     }
   }
 `
+
+export const ME_QUERY = gql`
+  {
+    me {
+      firstName
+      lastName
+      email
+      posts {
+        type
+        title
+      }
+    }
+  }
+`

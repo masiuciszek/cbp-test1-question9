@@ -1,5 +1,7 @@
 import { useMutation } from "@apollo/client"
+import Cookies from "js-cookie"
 import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 import { LOGIN_MUTATION } from "../../ClientGql/mutations"
 
 import {
@@ -18,12 +20,22 @@ interface FormProps {
 const LoginForm: React.FC<FormProps> = ({ className = "main-form" }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
+  const [isAuth, setIsAuth] = useState(false)
+  const routerHistory = useHistory()
   const [loginUserFn, logedInUser] = useMutation<UserMutationData>(
     LOGIN_MUTATION,
   )
 
-  console.log(loginUserFn)
+  React.useEffect(() => {
+    let token
+    if (Cookies.get("authToken")) {
+      token = Cookies.get("authToken")
+      setIsAuth(true)
+    }
+    if (isAuth) {
+      routerHistory.push("/")
+    }
+  }, [isAuth, routerHistory])
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault()

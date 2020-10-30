@@ -11,7 +11,7 @@ export const Query = {
   me: async (_: never, __: never, { req, res }: Ctx) => {
     try {
       const user = await User.findById(req.userId)
-      if (!user) return null
+      if (!user) throw Error("You are not logged in!")
 
       return user
     } catch (err) {

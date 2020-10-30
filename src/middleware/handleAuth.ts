@@ -13,16 +13,18 @@ const handleAuth = async (
   if (!authToken) {
     return next()
   }
+  try {
+    const decoded = verify(authToken, process.env.JWT_SECRET_ACCESS!) as any
 
-  const decoded = verify(authToken, process.env.JWT_SECRET_ACCESS!) as any
-
-  const user = await User.findById(decoded.userId)
-  if (!user) {
-    return next()
+    const user = await User.findById(decoded.userId)
+    if (!user) {
+      return next()
+    }
+    req.userId = user._id
+    next()
+  } catch (error) {
+    console.log(error.message)
   }
-  req.userId = user._id
-
-  next()
 }
 
 export default handleAuth

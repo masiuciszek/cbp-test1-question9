@@ -1,6 +1,7 @@
-import { useMutation } from "@apollo/client"
 import React, { useState } from "react"
+import { useMutation } from "@apollo/client"
 import { REGISTER_QUERY } from "../../ClientGql/mutations"
+import Cookies from "js-cookie"
 import {
   Button,
   FormGroup,
@@ -9,6 +10,7 @@ import {
   Input,
   Label,
 } from "../Styled/FormElements"
+import { useHistory } from "react-router-dom"
 
 interface RegisterFormProps {
   className?: string
@@ -25,11 +27,20 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
     password: "",
   })
 
+  const [isAuth, setIsAuth] = useState(false)
+
+  let token = Cookies.get("authToken")
+  React.useEffect(() => {
+    setIsAuth(true)
+    console.log("token", token)
+  }, [isAuth, token])
+
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
   const [registerFn, newUser] = useMutation<UserMutationData>(REGISTER_QUERY)
+  const routerHistory = useHistory()
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault()
