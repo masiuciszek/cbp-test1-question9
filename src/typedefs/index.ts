@@ -74,6 +74,13 @@ const typeDefs = gql`
     type: PostType!
   }
 
+  input UpdatePostInput {
+    id: ID!
+    title: String
+    desc: String
+    type: PostType
+  }
+
   type User {
     id: ID!
     firstName: String!
@@ -138,6 +145,7 @@ const typeDefs = gql`
     invalidateTokens: Boolean!
     createPost(input: PostInput): Post
     newShoe(input: NewShoeInput!): Shoe!
+    updatePost(input: UpdatePostInput!): Post
   }
 `
 

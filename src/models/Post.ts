@@ -5,7 +5,7 @@ export interface Post extends Document {
   title: string
   desc: string
   type: string
-  author: User["_id"]
+  author: User
   createdAt: Date
 }
 

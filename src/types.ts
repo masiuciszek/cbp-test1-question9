@@ -51,7 +51,6 @@ export interface PostInput {
   title: string
   desc: string
   type: PostType
-  author: string // author ID
 }
 export interface ShoeInput {
   brand: ShoeType
@@ -72,4 +71,11 @@ export interface Team {
   year: number
   color?: string
   hasUltras?: boolean
+}
+
+export interface UpdatePostInput {
+  id: string
+  title?: string
+  desc?: string
+  type?: PostType
 }

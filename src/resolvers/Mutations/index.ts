@@ -8,6 +8,7 @@ import {
   Input,
   LoginInput,
   PostInput,
+  UpdatePostInput,
   UserInput,
   UserUpdateInput,
 } from "../../types"
@@ -119,5 +120,34 @@ export const Mutations = {
     }
     await newPost.save()
     return newPost
+  },
+
+  updatePost: async (
+    _: never,
+    args: { input: UpdatePostInput },
+    { req, res }: Ctx,
+  ) => {
+    try {
+      const post = await Post.findById(args.input.id)
+      if (!post) {
+        throw new Error("post not found!")
+      }
+
+      // Check to see if person that updates the post is the owner of the post
+      if (!post.author.equals(req.userId.toString())) {
+        throw new Error("You have no permission to update this post")
+      }
+
+      const updatedPost = await Post.findByIdAndUpdate(
+        args.input.id,
+        {
+          ...args.input,
+        },
+        { new: true, runValidators: true },
+      )
+      return updatedPost
+    } catch (err) {
+      console.log(err.message)
+    }
   },
 }

@@ -12,7 +12,6 @@ export const Query = {
     try {
       const user = await User.findById(req.userId)
       if (!user) throw Error("You are not logged in!")
-
       return user
     } catch (err) {
       console.log(err.message)

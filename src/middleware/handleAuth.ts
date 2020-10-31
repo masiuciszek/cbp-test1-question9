@@ -14,9 +14,15 @@ const handleAuth = async (
     return next()
   }
   try {
-    const decoded = verify(authToken, process.env.JWT_SECRET_ACCESS!) as any
+    const { userId, exp } = verify(
+      authToken,
+      process.env.JWT_SECRET_ACCESS!,
+    ) as any
 
-    const user = await User.findById(decoded.userId)
+    if (Date.now() >= exp * 1000) {
+      return next()
+    }
+    const user = await User.findById(userId)
     if (!user) {
       return next()
     }
