@@ -3,6 +3,7 @@ import { jsx } from "@emotion/core"
 import { ThemeProvider } from "emotion-theming"
 import { Global, css } from "@emotion/core"
 import styled, { Theme } from "./styled"
+import Nav from "./Nav"
 
 const colors = {
   primary: "#fec7d7",
@@ -120,7 +121,7 @@ const Layout: React.FC = ({ children }) => {
           }
         `}
       />
-
+      <Nav />
       <Main>{children}</Main>
     </ThemeProvider>
   )

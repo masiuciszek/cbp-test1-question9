@@ -26,21 +26,21 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
     address: "",
     password: "",
   })
-
+  const routerHistory = useHistory()
   const [isAuth, setIsAuth] = useState(false)
 
   let token = Cookies.get("authToken")
   React.useEffect(() => {
-    setIsAuth(true)
-    console.log("token", token)
-  }, [isAuth, token])
+    if (isAuth) {
+      routerHistory.push("/")
+    }
+  }, [isAuth, routerHistory])
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
   const [registerFn, newUser] = useMutation<UserMutationData>(REGISTER_QUERY)
-  const routerHistory = useHistory()
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault()

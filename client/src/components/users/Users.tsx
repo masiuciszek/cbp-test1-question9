@@ -14,6 +14,7 @@ const UsersWrapper = styled("div")`
   padding: 1rem;
   height: 100%;
   display: flex;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   font-size: 10px;

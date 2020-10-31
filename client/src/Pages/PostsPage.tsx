@@ -1,21 +1,21 @@
 import React from "react"
 import Title from "../Components/Elements/Title"
+import Posts from "../Components/posts/Posts"
 import { Page, Wrapper } from "../Components/Styled"
-import { Users } from "../Components/users"
 
 const extraStyles = {
   "text-align": "center",
+  "border-bottom": "2px solid #333",
 }
 
-const HomePage = () => {
+const PostsPage = () => {
   return (
     <Page>
       <Wrapper>
-        <Title title="All Registered Users" extraStyles={extraStyles} />
-        <Users />
+        <Title title="Posts" extraStyles={extraStyles} />
+        <Posts />
       </Wrapper>
     </Page>
   )
 }
-
-export default HomePage
+export default PostsPage

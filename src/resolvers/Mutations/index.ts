@@ -135,7 +135,7 @@ export const Mutations = {
 
       // Check to see if person that updates the post is the owner of the post
       if (!post.author.equals(req.userId.toString())) {
-        throw new Error("You have no permission to update this post")
+        throw Error("You have no permission to update this post")
       }
 
       const updatedPost = await Post.findByIdAndUpdate(

@@ -25,3 +25,17 @@ export const ME_QUERY = gql`
     }
   }
 `
+export const POSTS_QUERY = gql`
+  {
+    posts: getPosts {
+      id
+      title
+      desc
+      type
+      author {
+        firstName
+        lastName
+      }
+    }
+  }
+`

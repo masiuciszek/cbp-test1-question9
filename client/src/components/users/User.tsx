@@ -10,6 +10,10 @@ const randomNum = () => Math.floor(Math.random() * 120)
 const StyledUser = styled("div")`
   padding: 1rem;
   margin: 1rem 0;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+
   p {
     font-size: 3em;
     span {
